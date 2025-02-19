@@ -41,8 +41,8 @@
     </div>
   </section>
 
-  <section class="relative">
-    <img src="/images/ticket.svg" alt="ticket" class="absolute top-[-15px] left-14">
+  <section class="relative py-20">
+    <img src="/images/ticket.svg" alt="ticket" class="absolute top-16 left-14">
     <img src="/images/img_biosthetique.svg" alt="biosthetique" class="w-full h-auto">
     <img src="/images/logo-coiffure.svg" alt="logo" class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[500px]">
     <img src="/images/cheveux.svg" alt="cheveux" class="absolute bottom-10 z-10">
@@ -52,6 +52,33 @@
         <button class="border border-[#E09550] px-10 py-3 text-[#E09550] rounded-full bg-white shadow-md">Rendez-vous en ligne</button>
         <button class="border border-[#E09550] px-10 py-3 text-[#E09550] rounded-full bg-white shadow-md">Contactez-nous</button>
       </div>
+    </div>
+  </section>
+
+  <section class="my-20 px-20 flex justify-between items-center">
+    <div class="w-1/2 space-y-10 px-20">
+      <h2 class="text-[#E09550] text-4xl font-bold">Quand la Beauté Rencontre l’Écologie :</h2>
+      <h3 class="text-2xl font-bold">Stylé x La Biosthétique</h3>
+      <p>Chez Stylé, nous croyons en une coiffure qui allie élégance et engagement. De Bruxelles à Palerme, notre mission est de sublimer chaque chevelure tout en respectant la planète. C’est pourquoi nous sommes fiers d’annoncer notre collaboration avec La Biosthétique, une marque d’excellence qui partage nos valeurs de soin, d’innovation et de durabilité. Ensemble, nous donnons une seconde vie aux cheveux coupés grâce à un programme de recyclage capillaire révolutionnaire.</p>
+      <button class="border border-[#E09550] px-20 py-3 text-[#E09550] rounded-full bg-white shadow-md">En savoir plus</button>
+    </div>
+    <div class="uppercase border-2 border-[#E09550] w-1/2 h-[600px] flex flex-col justify-center items-center text-center relative">
+      <h1 class="text-6xl font-bold leading-[0.5] scale-y-150 relative">la biosthetique <br><span class="font-normal text-2xl">paris</span></h1>
+      <p class="absolute bottom-16 text-2xl">the culture of total beauty</p>
+    </div>
+  </section>
+
+  <section class="my-20 px-20 flex justify-between items-center">
+    <div class="border-2 border-[#E09550] w-1/2 h-[600px] flex justify-center items-center">
+      <img src="/images/hair_recycle.svg" alt="hair_recycle">
+    </div>
+    <div class="w-1/2 space-y-10 px-20">
+      <h2 class="text-[#E09550] text-4xl font-bold">Pourquoi jeter quand on peut réutiliser ?</h2>
+      <h3 class="text-2xl font-bold"> Stylé x Haire recycle</h3>
+      <p>Les cheveux récupérés sont transformés en solutions éco-responsables, contribuant à la dépollution et à la préservation de l’environnement.</p>
+      <p class="text-[#E09550]">Un geste beauté, un impact positif.</p>
+      <p>En choisissant Stylé et La Biosthétique, vous optez pour une coiffure d’exception tout en participant activement à une démarche écologique. Parce que chaque coupe peut faire la différence.</p>
+      <button class="border border-[#E09550] px-20 py-3 text-[#E09550] rounded-full bg-white shadow-md">En savoir plus</button>
     </div>
   </section>
 

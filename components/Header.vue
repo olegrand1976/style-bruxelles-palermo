@@ -1,6 +1,6 @@
 <template>
     <header>
-      <nav class="flex justify-between items-center !px-20 fixed w-full top-0 z-10">
+      <nav class="flex justify-between items-center !px-20 fixed w-full top-0 z-20 shadow-xl">
         <img src="/images/logo-nav.svg" alt="Stylé">
         <ul>
           <li><NuxtLink to="/">Qui sommes-nous ?</NuxtLink></li>
