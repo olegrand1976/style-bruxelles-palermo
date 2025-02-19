@@ -1,5 +1,6 @@
 <template>
   <div class="w-4/5 h-4 bg-[#E09550] rounded-r-lg"></div>
+
   <section class="px-20">
     <div class="flex justify-between items-center py-20 text-6xl font[Luminari]  text-gray-400">
       <p>CAUDALIE</p>
@@ -39,6 +40,21 @@
     <div class="text-center text-5xl leading-normal font-bold">Stylé s'engage pour une beauté durable ! <br> Grâce à notre collaboration avec La Biosthétique,  <br> nous donnons une seconde vie aux cheveux <br> coupés pour un avenir plus vert.
     </div>
   </section>
+
+  <section class="relative">
+    <img src="/images/ticket.svg" alt="ticket" class="absolute top-[-15px] left-14">
+    <img src="/images/img_biosthetique.svg" alt="biosthetique" class="w-full h-auto">
+    <img src="/images/logo-coiffure.svg" alt="logo" class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[500px]">
+    <img src="/images/cheveux.svg" alt="cheveux" class="absolute bottom-10 z-10">
+    <div class="w-full flex items-center justify-end gap-20 bg-[#E09550] py-12 px-24 absolute bottom-10">
+      <p class="text-5xl text-white font-bold leading-normal">Contactez-nous <br> pour un rendez-vous !</p>
+      <div class="flex flex-col gap-6">
+        <button class="border border-[#E09550] px-10 py-3 text-[#E09550] rounded-full bg-white shadow-md">Rendez-vous en ligne</button>
+        <button class="border border-[#E09550] px-10 py-3 text-[#E09550] rounded-full bg-white shadow-md">Contactez-nous</button>
+      </div>
+    </div>
+  </section>
+
 </template>
 
 <script setup lang="ts">
