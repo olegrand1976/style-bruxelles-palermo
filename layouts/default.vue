@@ -3,7 +3,6 @@
       <Header />
       <!-- Optionnel : le Carousel peut être intégré ici ou dans la page d'accueil -->
       <Carousel v-if="$route.path === '/'"/>
-      <Nuxt />
       <Footer />
     </div>
   </template>
