@@ -82,6 +82,51 @@
     </div>
   </section>
 
+  <section class="my-20">
+    <img src="/images/img_bleu.svg" alt="image-bleu" class="w-full object-cover">
+  </section>
+
+  <section class="my-20 px-10 grid grid-cols-4 gap-6">
+    <img src="/images/pic-caressoule-1.svg" alt="pic-caressoule" class="w-full object-cover rounded-3xl">
+    <img src="/images/pic-caressoule-2.svg" alt="pic-caressoule" class="w-full object-cover rounded-3xl">
+    <img src="/images/pic-caressoule-3.svg" alt="pic-caressoule" class="w-full object-cover rounded-3xl">
+    <img src="/images/pic-caressoule-4.svg" alt="pic-caressoule" class="w-full object-cover rounded-3xl">
+  </section>
+
+  <section class="my-10 px-20 flex justify-between items-center">
+    <div class="w-1/2 space-y-10 px-20">
+      <h2 class="text-[#E09550] text-4xl font-bold">Stylé, de Bruxelles à Palermo</h2>
+      <h3 class="text-2xl font-bold">L’art de la coiffure sans frontières</h3>
+      <p>2344 kilomètres et 11 ans d’expériences les séparaient, mais leur passion les a réunies. <br>
+          Jenny, bruxelloise, et Letizia, originaire de Palerme, <br>
+          partagent une vision commune de la coiffure : élégance, savoir-faire et authenticité. <br>
+          Arrivée en Belgique en 2017, Letizia croise le chemin de Jenny dans un salon de Watermael-Boitsfort. Très vite, une alchimie naturelle s’installe entre elles, <br>
+          tant sur le plan professionnel que personnel. <br>
+          Ce qui n’était au départ qu’une belle rencontre est devenu une évidence : créer ensemble un espace où chaque client se sent unique et sublimé. 
+          </p>
+      <p>C’est ainsi qu’est né "Stylé, de Bruxelles à Palermo". <br>
+        Depuis le 1ᵉʳ juillet 2020, leur salon situé à Auderghem est un véritable écrin dédié à la beauté capillaire, où le savoir-faire italien et la précision belge se conjuguent harmonieusement. <br>
+        Que vous souhaitiez une coupe tendance, une coloration éclatante ou un soin expert, <br>
+        Jenny et Letizia vous accueillent avec passion et bienveillance. <br>
+        Parce que votre style est notre signature.
+      </p>
+      <div class="space-x-10">
+        <button class="border border-[#E09550] px-20 py-3 text-[#E09550] rounded-full bg-white shadow-md">Contactez-nous</button>
+        <button class="border border-[#E09550] px-16 py-3 bg-[#E09550] rounded-full text-white shadow-md">Rendez-vous en ligne</button>
+      </div>
+    </div>
+    <div class="w-1/2">
+      <img src="/images/img_coiffure.svg" alt="img_coiffure" class="w-full" style="border-top-right-radius:200px">
+    </div>
+  </section>
+
+  <section class="flex justify-end px-20">
+    <div class="w-1/2 grid grid-cols-3 gap-6">
+      <img src="/images/im1.svg" alt="image1" class="w-full object-cover rounded-3xl">
+      <img src="/images/im2.svg" alt="image2" class="w-full object-cover rounded-3xl">
+      <img src="/images/im2.svg" alt="image3" class="w-full object-cover rounded-3xl">
+    </div>
+  </section>
 </template>
 
 <script setup lang="ts">
