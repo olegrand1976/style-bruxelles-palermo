@@ -15,10 +15,11 @@
             <input type="email" placeholder="Enter Your Email" class="p-4">
             <button type="button" class="border border-[#E09550] py-4 px-8 rounded-lg font-bold text-white bg-[#E09550] inset-shadow-sm inset-shadow-gray-500">Subscribe</button>
           </div>
-          <div class="flex py-4 gap-4">
-            <p>facebook</p>
-            <p>instagram</p>
-            <p>youtube</p>
+          <div class="flex items-center py-4 gap-4 text-4xl text-[#E09550]">
+            <Icon name="uil:twitter" />
+            <Icon name="uil:facebook" />
+            <Icon name="uil:instagram" />
+            <Icon name="uil:youtube" />
           </div>
         </div>
       </div>
