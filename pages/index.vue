@@ -120,7 +120,7 @@
     </div>
   </section>
 
-  <section class="flex justify-end px-20">
+  <section class="flex justify-end px-20 mb-20">
     <div class="w-1/2 grid grid-cols-3 gap-6">
       <img src="/images/im1.svg" alt="image1" class="w-full object-cover rounded-3xl">
       <img src="/images/im2.svg" alt="image2" class="w-full object-cover rounded-3xl">

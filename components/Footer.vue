@@ -1,20 +1,30 @@
 <template>
-    <footer class="footer">
-      <div class="footer-content">
-        <div class="contact-info">
-          <h2>Salon de Coiffure XYZ</h2>
-          <p>Adresse : 123 Rue de la Coiffure, 1000 Bruxelles</p>
-          <p>Téléphone : 012 34 56 78</p>
-          <p>Email : <a href="mailto:contact@salondecoiffure.xyz">contact@salondecoiffure.xyz</a></p>
+    <footer>
+      <div class="px-20 py-4 border shadow-sm flex justify-between items-center">
+        <div class="space-y-5">
+          <h2 class="font-bold">Coordonnées <br> Stylé de Bruxelles a Palermo</h2>
+          <p>Rue de la Résistance, 92/A <br> 7131 Bruxelles, Belgique</p>
+          <p class="font-bold">Téléphone : <span class="font-normal">02/ 660 07 08</span></p>
+          <p class="font-bold">Email : <a href="#" class="font-normal">info@stylédebruxelles.be</a></p>
+          <p class="font-bold">Horaires d’ouverture <br> <span class="font-normal">7 jours /7 jours</span></p>
         </div>
-        <div class="social-links">
-          <a href="https://facebook.com" target="_blank" rel="noopener">Facebook</a>
-          <a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a>
-          <a href="https://twitter.com" target="_blank" rel="noopener">Twitter</a>
+        <img src="/images/style_noir.svg" alt="logo" class="w-[300px]">
+        <div>
+          <label class="font-bold">newsletter</label>
+          <div class="border rounded-lg mt-2">
+            <input type="email" placeholder="Enter Your Email" class="p-4">
+            <button type="button" class="border border-[#E09550] py-4 px-8 rounded-lg font-bold text-white bg-[#E09550] inset-shadow-sm inset-shadow-gray-500">Subscribe</button>
+          </div>
+          <div class="flex py-4 gap-4">
+            <p>facebook</p>
+            <p>instagram</p>
+            <p>youtube</p>
+          </div>
         </div>
-        <div class="copyright">
-          <p>&copy; 2025 Salon de Coiffure XYZ. Tous droits réservés.</p>
-        </div>
+      </div>
+      <div class="text-center">
+        <div class="p-4 bg-[#E09550] text-white">Site commercialisé par LL-IT Software & Computer : www.ll-it-sc.be</div>
+        <div class="p-4">&copy; 2025 Stylé. Tous droits réservés.</div>
       </div>
     </footer>
   </template>
@@ -24,40 +34,6 @@
   </script>
   
   <style scoped>
-  .footer {
-    background-color: #f8f8f8;
-    padding: 2rem;
-    text-align: center;
-    color: #333;
-    font-size: 0.9rem;
-  }
-  
-  .footer-content {
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  
-  .contact-info h2 {
-    margin-bottom: 0.5rem;
-    font-size: 1.2rem;
-  }
-  
-  .contact-info p {
-    margin: 0.2rem 0;
-  }
-  
-  .social-links {
-    margin: 1rem 0;
-  }
-  
-  .social-links a {
-    margin: 0 0.5rem;
-    color: #333;
-    text-decoration: none;
-  }
-  
-  .social-links a:hover {
-    text-decoration: underline;
-  }
+
   </style>
   
