@@ -5,21 +5,21 @@
           <h2 class="font-bold">Coordonnées <br> Stylé de Bruxelles a Palermo</h2>
           <p>Rue de la Résistance, 92/A <br> 7131 Bruxelles, Belgique</p>
           <p class="font-bold">Téléphone : <span class="font-normal">02/ 660 07 08</span></p>
-          <p class="font-bold">Email : <a href="#" class="font-normal">info@stylédebruxelles.be</a></p>
+          <p class="font-bold">Email : <a href="#" class="font-normal text-blue-500">info@stylédebruxelles.be</a></p>
           <p class="font-bold">Horaires d’ouverture <br> <span class="font-normal">7 jours /7 jours</span></p>
         </div>
         <img src="/images/style_noir.svg" alt="logo" class="w-[300px]">
         <div>
           <label class="font-bold">newsletter</label>
-          <div class="border rounded-lg mt-2">
-            <input type="email" placeholder="Enter Your Email" class="p-4">
-            <button type="button" class="border border-[#E09550] py-4 px-8 rounded-lg font-bold text-white bg-[#E09550] inset-shadow-sm inset-shadow-gray-500">Subscribe</button>
+          <div class="border border-gray-300 rounded-lg mt-2">
+            <input type="email" placeholder="Enter Your Email" class="p-4 rounded-lg">
+            <button type="button" class="border border-[#E09550] py-4 px-8 rounded-lg font-bold text-white bg-[#E09550]" style="box-shadow:inset 0 2px 4px 0px rgba(0,0,0,0.3)">Subscribe</button>
           </div>
           <div class="flex items-center py-4 gap-4 text-4xl text-[#E09550]">
-            <Icon name="uil:twitter" />
-            <Icon name="uil:facebook" />
-            <Icon name="uil:instagram" />
-            <Icon name="uil:youtube" />
+            <Icon name="uil:twitter" class="cursor-pointer" />
+            <Icon name="uil:facebook" class="cursor-pointer" />
+            <Icon name="uil:instagram" class="cursor-pointer" />
+            <Icon name="uil:youtube" class="cursor-pointer" />
           </div>
         </div>
       </div>

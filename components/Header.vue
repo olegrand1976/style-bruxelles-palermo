@@ -1,42 +1,42 @@
 <template>
-    <header>
-      <nav class="flex justify-between items-center !px-20 fixed w-full top-0 z-20 shadow-xl">
-        <img src="/images/logo-nav.svg" alt="Stylé">
-        <ul>
-          <li><NuxtLink to="/">Qui sommes-nous ?</NuxtLink></li>
-          <li><NuxtLink to="/services">Services</NuxtLink></li>
-          <li><NuxtLink to="/contact">Contact</NuxtLink></li>
-          <!-- Lien externe pour Prendre rendez-vous -->
-          <li><a href="https://exemple-prendre-rendez-vous.com" target="_blank" rel="noopener" class="border px-8 py-3 bg-[#E09550] !text-white rounded-full">Rendez-vous en ligne</a></li>
-          <li>
-            <LanguageToggle />
-          </li>
-        </ul>
-      </nav>
-    </header>
-  </template>
+  <header>
+    <nav class="flex justify-between items-center bg-white px-20 py-3 fixed w-full top-0 z-20 shadow-xl">
+      <img src="/images/logo-nav.svg" alt="Stylé">
+      <ul class="flex list-none gap-8 items-center m-0 p-0">
+        <li><NuxtLink to="/" class="nav-link">Qui sommes-nous ?</NuxtLink></li>
+        <li><NuxtLink to="/services" class="nav-link">Services</NuxtLink></li>
+        <li><NuxtLink to="/contact" class="nav-link">Contact</NuxtLink></li>
+        <li><a href="https://exemple-prendre-rendez-vous.com" target="_blank" rel="noopener" class="border px-8 py-3 bg-[#E09550] text-white rounded-full hover:bg-white hover:text-[#E09550] transition easy 5s">Rendez-vous en ligne</a></li>
+        <li>
+          <LanguageToggle />
+        </li>
+      </ul>
+    </nav>
+  </header>
+</template>
   
-  <script setup lang="ts">
+<script setup lang="ts">
   import { defineComponent } from 'vue'
   import LanguageToggle from '~/components/LanguageToggle.vue'
-  </script>
+</script>
   
-  <style scoped>
-  nav {
-    background-color: #fff;
-    padding: 1rem;
-  }
-  ul {
-    display: flex;
-    list-style: none;
-    gap: 2rem;
-    align-items: center;
-    margin: 0;
-    padding: 0;
-  }
-  a, a:visited {
-    color: #333;
-    text-decoration: none;
-  }
-  </style>
+<style scoped>
+/* style lien navbar */
+.nav-link {
+  position: relative;
+  padding-bottom: 10px;
+}
+.nav-link.router-link-exact-active{
+  color: #E09550;
+}
+.nav-link.router-link-exact-active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 75%;
+  border-bottom: 5px solid #E09550;
+  border-radius: 20px;
+}
+</style>
   

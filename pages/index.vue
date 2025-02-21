@@ -2,7 +2,7 @@
   <div class="w-4/5 h-4 bg-[#E09550] rounded-r-lg"></div>
 
   <section class="px-20">
-    <div class="flex justify-between items-center py-20 text-6xl font[Luminari]  text-gray-400">
+    <div class="flex justify-between items-center py-20 text-6xl font[Luminari] text-gray-400">
       <p>CAUDALIE</p>
       <p>NUOO</p>
       <p class="font-bold">Origine</p>
