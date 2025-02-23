@@ -3,26 +3,18 @@ stages:
   - deploy
 
 #####################################
-# 🚀 Étape 1 : Build & Push Docker Image
+# 🛠 Étape 1 : Build & Push Docker Image
 #####################################
 build:
   stage: build
-  image: docker:20.10.16  # Utilisation d'une image avec Docker CLI
-  services:
-    - name: docker:dind
-      alias: docker
-      command: ["--tls=false"]
+  image: docker:20.10.16  # Version avec Docker CLI
   variables:
-    DOCKER_HOST: "tcp://docker:2375"
-    DOCKER_TLS_CERTDIR: ""
-    DOCKER_DRIVER: "overlay2"
-    NODE_ENV: "production"
+    DOCKER_HOST: "unix:///var/run/docker.sock"  # Permet d'utiliser Docker de l'hôte
   before_script:
-    - echo "⏳ Attente du démarrage de Docker DIND..."
-    - until docker info >/dev/null 2>&1; do echo "⏳ Docker DIND n'est pas encore prêt..."; sleep 3; done
-    - echo "✅ Docker DIND est prêt."
+    - echo "🔧 Vérification de Docker sur l’hôte..."
+    - docker info
   script:
-    - echo "🐳 Construction et push de l'image Docker..."
+    - echo "🐳 Construction et push de l’image Docker..."
     - docker build -t docker.io/$DOCKERHUB_USERNAME/$DOCKER_IMAGE_NAME:latest -f Dockerfile.prod .
     - docker login -u "$DOCKERHUB_USERNAME" -p "$DOCKERHUB_PASSWORD"
     - docker push docker.io/$DOCKERHUB_USERNAME/$DOCKER_IMAGE_NAME:latest
@@ -34,14 +26,12 @@ build:
 #####################################
 deploy:
   stage: deploy
-  image: docker:20.10.16  # Utilisation d'une image avec Docker CLI
+  image: docker:20.10.16  # Version avec Docker CLI
   variables:
-    DOCKER_HOST: "unix:///var/run/docker.sock"  # Permet d'utiliser Docker de l'hôte
+    DOCKER_HOST: "unix:///var/run/docker.sock"
   before_script:
-    - echo "🛠 Déploiement local sur le serveur (Docker tourne directement sur l'hôte)."
+    - echo "🛠 Déploiement local sur le serveur..."
   script:
-    - echo "🔄 Connexion à Docker Hub..."
-    - docker login -u "$DOCKERHUB_USERNAME" -p "$DOCKERHUB_PASSWORD"
     - echo "📥 Téléchargement de la dernière image..."
     - docker pull docker.io/$DOCKERHUB_USERNAME/$DOCKER_IMAGE_NAME:latest
     - echo "🛑 Arrêt et suppression du conteneur existant..."
