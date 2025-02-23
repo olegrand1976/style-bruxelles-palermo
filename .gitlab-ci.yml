@@ -25,7 +25,7 @@ deploy:
     - docker pull docker.io/$DOCKERHUB_USERNAME/$DOCKER_IMAGE_NAME:latest
     # Connexion SSH pour exécuter le déploiement
     - >
-      ssh -i id_rsa -o UserKnownHostsFile=known_hosts -o StrictHostKeyChecking=yes $SERVER_USER@$SERVER_IP "
+      ssh -vvv -i id_rsa -o UserKnownHostsFile=known_hosts -o StrictHostKeyChecking=yes $SERVER_USER@$SERVER_IP "
         docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD &&
         docker pull docker.io/$DOCKERHUB_USERNAME/$DOCKER_IMAGE_NAME:latest &&
         docker stop nuxt-container || true &&
