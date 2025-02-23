@@ -22,7 +22,6 @@ deploy:
     - docker stop nuxt-container || true
     - docker rm nuxt-container || true
     # Démarre un nouveau container avec la dernière image
-    - docker run -d --restart=always -p 3000:3000 --name nuxt-container docker.io/$DOCKERHUB_USERNAME/$DOCKER_IMAGE_NAME:latest
-
+    - docker run -d --restart=always -p 3000:3000 --name nuxt-container docker.io/olegrand1976/style-bruxelles-palermo-app:latest
   only:
     - main
