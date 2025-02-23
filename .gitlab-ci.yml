@@ -3,49 +3,11 @@ stages:
   - deploy
 
 #####################################
-# Étape 1 : Build & Push Docker Image
+# 🚀 Étape 1 : Build & Push Docker Image
 #####################################
 build:
   stage: build
-  image: node:20
-  services:
-    - name: docker:dind
-      alias: docker
-      command: ["--tls=false"]
-  variables:
-    DOCKER_HOST: tcp://docker:2375
-    DOCKER_TLS_CERTDIR: ""
-    DOCKER_DRIVER: overlay2
-    NODE_ENV: production
-  cache:
-    key: "$CI_PROJECT_NAME-$CI_COMMIT_REF_SLUG"
-    paths:
-      - node_modules/
-      - .npm/
-  before_script:
-    - apt-get update && apt-get install -y docker.io
-    - echo "Attente de la résolution DNS pour 'docker'..."
-    - until getent hosts docker; do echo "En attente de 'docker'..."; sleep 1; done
-  script:
-    - rm -rf node_modules
-    - npm cache clean --force    
-    - if [ ! -f package-lock.json ]; then npm install --package-lock-only; fi
-    - npm install
-    - export NODE_OPTIONS=--max_old_space_size=8192
-    - npm run build
-    - docker build -t docker.io/$DOCKERHUB_USERNAME/$DOCKER_IMAGE_NAME:latest -f Dockerfile.prod .
-    - docker login -u "$DOCKERHUB_USERNAME" -p "$DOCKERHUB_PASSWORD"
-    - docker push docker.io/$DOCKERHUB_USERNAME/$DOCKER_IMAGE_NAME:latest
-    - docker images
-  only:
-    - main
-
-#####################################
-# Étape 2 : Déploiement sur le serveur
-#####################################
-deploy:
-  stage: deploy
-  image: docker:20.10.16
+  image: docker:20.10.16  # Utilisation d'une image avec Docker CLI
   services:
     - name: docker:dind
       alias: docker
@@ -54,9 +16,29 @@ deploy:
     DOCKER_HOST: "tcp://docker:2375"
     DOCKER_TLS_CERTDIR: ""
     DOCKER_DRIVER: "overlay2"
+    NODE_ENV: "production"
   before_script:
-    - apk add --no-cache openssh-client sshpass
-    - echo "🛠 Déploiement local sur le serveur (pas de SSH requis)."
+    - echo "⏳ Attente du démarrage de Docker DIND..."
+    - until docker info >/dev/null 2>&1; do echo "⏳ Docker DIND n'est pas encore prêt..."; sleep 3; done
+    - echo "✅ Docker DIND est prêt."
+  script:
+    - echo "🐳 Construction et push de l'image Docker..."
+    - docker build -t docker.io/$DOCKERHUB_USERNAME/$DOCKER_IMAGE_NAME:latest -f Dockerfile.prod .
+    - docker login -u "$DOCKERHUB_USERNAME" -p "$DOCKERHUB_PASSWORD"
+    - docker push docker.io/$DOCKERHUB_USERNAME/$DOCKER_IMAGE_NAME:latest
+  only:
+    - main
+
+#####################################
+# 🚀 Étape 2 : Déploiement sur le serveur
+#####################################
+deploy:
+  stage: deploy
+  image: docker:20.10.16  # Utilisation d'une image avec Docker CLI
+  variables:
+    DOCKER_HOST: "unix:///var/run/docker.sock"  # Permet d'utiliser Docker de l'hôte
+  before_script:
+    - echo "🛠 Déploiement local sur le serveur (Docker tourne directement sur l'hôte)."
   script:
     - echo "🔄 Connexion à Docker Hub..."
     - docker login -u "$DOCKERHUB_USERNAME" -p "$DOCKERHUB_PASSWORD"
