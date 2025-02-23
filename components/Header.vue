@@ -6,7 +6,7 @@
         <li><NuxtLink to="/" class="nav-link">Qui sommes-nous ?</NuxtLink></li>
         <li><NuxtLink to="/services" class="nav-link">Services</NuxtLink></li>
         <li><NuxtLink to="/contact" class="nav-link">Contact</NuxtLink></li>
-        <li><a href="https://exemple-prendre-rendez-vous.com" target="_blank" rel="noopener" class="border px-8 py-3 bg-[#E09550] text-white rounded-full hover:bg-white hover:text-[#E09550] transition easy 5s">Rendez-vous en ligne</a></li>
+        <li><a href="https://client.optios.net/online_booking.html?/7827" target="_blank" rel="noopener" class="border px-8 py-3 bg-[#E09550] text-white rounded-full hover:bg-white hover:text-[#E09550] transition easy 5s">Rendez-vous en ligne</a></li>
         <li>
           <LanguageToggle />
         </li>
@@ -17,7 +17,7 @@
   
 <script setup lang="ts">
   import { defineComponent } from 'vue'
-  import LanguageToggle from '~/components/LanguageToggle.vue'
+  import LanguageToggle from '@/components/LanguageToggle.vue'
 </script>
   
 <style scoped>
