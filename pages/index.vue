@@ -19,7 +19,7 @@
         <p>C’est ainsi qu’est né "Stylé, de Bruxelles à Palermo". <br> Depuis le 1ᵉʳ juillet 2020, leur salon situé à Auderghem est un véritable écrin dédié à la      beauté capillaire, où le savoir-faire italien et la précision belge se conjuguent harmonieusement.Que vous souhaitiez une coupe tendance, une coloration éclatante ou un soin expert, Jenny et Letizia vous accueillent avec passion et bienveillance. <br> Parce que votre style est notre signature.</p>
         <div class="py-8">
           <button class="border border-[#E09550] px-10 py-3 text-[#E09550] rounded-full mr-10 shadow-md">Contactez-nous</button>
-          <button class="border px-10 py-3 bg-[#E09550] text-white rounded-full shadow-md">Rendez-vous en ligne</button>
+          <button onclick="window.open('https://client.optios.net/online_booking.html?/7827', '_blank', 'noopener')" class="border px-10 py-3 bg-[#E09550] text-white rounded-full shadow-md hover:bg-white hover:text-[#E09550] transition ease-in-out duration-500">Rendez-vous en ligne</button>
         </div>
       </div>
     </div>
@@ -49,7 +49,7 @@
     <div class="w-full flex items-center justify-end gap-20 bg-[#E09550] py-12 px-24 absolute bottom-10">
       <p class="text-5xl text-white font-bold leading-normal">Contactez-nous <br> pour un rendez-vous !</p>
       <div class="flex flex-col gap-6">
-        <button class="border border-[#E09550] px-10 py-3 text-[#E09550] rounded-full bg-white shadow-md">Rendez-vous en ligne</button>
+        <button onclick="window.open('https://client.optios.net/online_booking.html?/7827', '_blank', 'noopener')" class="border px-10 py-3 bg-[#E09550] text-white rounded-full shadow-md hover:bg-white hover:text-[#E09550] transition ease-in-out duration-500">Rendez-vous en ligne</button>
         <button class="border border-[#E09550] px-10 py-3 text-[#E09550] rounded-full bg-white shadow-md">Contactez-nous</button>
       </div>
     </div>
@@ -112,7 +112,7 @@
       </p>
       <div class="space-x-10">
         <button class="border border-[#E09550] px-20 py-3 text-[#E09550] rounded-full bg-white shadow-md">Contactez-nous</button>
-        <button class="border border-[#E09550] px-16 py-3 bg-[#E09550] rounded-full text-white shadow-md">Rendez-vous en ligne</button>
+        <button onclick="window.open('https://client.optios.net/online_booking.html?/7827', '_blank', 'noopener')" class="border px-10 py-3 bg-[#E09550] text-white rounded-full shadow-md hover:bg-white hover:text-[#E09550] transition ease-in-out duration-500">Rendez-vous en ligne</button>
       </div>
     </div>
     <div class="w-1/2">
