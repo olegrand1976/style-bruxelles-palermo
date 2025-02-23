@@ -1,3 +1,48 @@
+stages:
+  - build
+  - deploy
+
+#####################################
+# Étape 1 : Build & Push Docker Image
+#####################################
+build:
+  stage: build
+  image: node:20
+  services:
+    - name: docker:dind
+      alias: docker
+      command: ["--tls=false"]
+  variables:
+    DOCKER_HOST: tcp://docker:2375
+    DOCKER_TLS_CERTDIR: ""
+    DOCKER_DRIVER: overlay2
+    NODE_ENV: production
+  cache:
+    key: "$CI_PROJECT_NAME-$CI_COMMIT_REF_SLUG"
+    paths:
+      - node_modules/
+      - .npm/
+  before_script:
+    - apt-get update && apt-get install -y docker.io
+    - echo "Attente de la résolution DNS pour 'docker'..."
+    - until getent hosts docker; do echo "En attente de 'docker'..."; sleep 1; done
+  script:
+    - rm -rf node_modules
+    - npm cache clean --force    
+    - if [ ! -f package-lock.json ]; then npm install --package-lock-only; fi
+    - npm install
+    - export NODE_OPTIONS=--max_old_space_size=8192
+    - npm run build
+    - docker build -t docker.io/$DOCKERHUB_USERNAME/$DOCKER_IMAGE_NAME:latest -f Dockerfile.prod .
+    - docker login -u "$DOCKERHUB_USERNAME" -p "$DOCKERHUB_PASSWORD"
+    - docker push docker.io/$DOCKERHUB_USERNAME/$DOCKER_IMAGE_NAME:latest
+    - docker images
+  only:
+    - main
+
+#####################################
+# Étape 2 : Déploiement sur le serveur
+#####################################
 deploy:
   stage: deploy
   image: docker:20.10.16
