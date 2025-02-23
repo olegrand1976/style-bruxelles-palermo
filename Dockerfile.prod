@@ -20,10 +20,13 @@ COPY --from=builder /app/package.json /app/package-lock.json ./
 COPY --from=builder /app/.output ./.output
 
 # Installer les dépendances de production
-RUN npm ci --only=production --omit=optional
+#RUN npm ci --only=production --omit=optional
 
 # Exécuter Husky après l'installation
-RUN npm run prepare || echo "Husky non trouvé, passage..."
+#RUN npm run prepare || echo "Husky non trouvé, passage..."
+
+RUN npm ci
+RUN npm run prepare
 
 # Ajouter un utilisateur et un groupe non-root
 RUN addgroup -S appgroup && adduser -S appuser -G appgroup
