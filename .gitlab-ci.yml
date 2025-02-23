@@ -5,6 +5,9 @@ stages:
 #####################################
 # Étape 1 : Build & Push Docker Image
 #####################################
+#####################################
+# Étape 1 : Build & Push Docker Image
+#####################################
 build:
   stage: build
   image: node:20
