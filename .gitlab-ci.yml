@@ -14,14 +14,23 @@ deploy:
     DOCKER_DRIVER: overlay2
   before_script:
     - apk add --no-cache openssh-client sshpass
-    - echo "🛠 Connexion directe au serveur (pas de SSH requis)."
+    - echo "🛠 Vérification de la connexion SSH..."
+    - ssh -i id_rsa -o UserKnownHostsFile=known_hosts -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST "echo '✅ Connexion SSH OK'"
   script:
-    - docker login -u "$DOCKERHUB_USERNAME" -p "$DOCKERHUB_PASSWORD"
-    - docker pull docker.io/$DOCKERHUB_USERNAME/$DOCKER_IMAGE_NAME:latest
-    # Stop et supprime le container existant s'il tourne déjà
-    - docker stop nuxt-container || true
-    - docker rm nuxt-container || true
-    # Démarre un nouveau container avec la dernière image
-    - docker run -d --restart=always -p 3000:3000 --name nuxt-container docker.io/olegrand1976/style-bruxelles-palermo-app:latest
+    - echo "🛠 Connexion au serveur distant et exécution des commandes Docker..."
+    - >
+      ssh -i id_rsa -o UserKnownHostsFile=known_hosts -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST "
+        echo '🔄 Connexion à Docker Hub...' &&
+        docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD &&
+        echo '📥 Téléchargement de la dernière image...' &&
+        docker pull docker.io/$DOCKERHUB_USERNAME/$DOCKER_IMAGE_NAME:latest &&
+        echo '🛑 Arrêt et suppression du conteneur existant...' &&
+        docker stop nuxt-container || true &&
+        docker rm nuxt-container || true &&
+        echo '🚀 Lancement du nouveau conteneur...' &&
+        docker run -d --restart=always -p 3000:3000 --name nuxt-container docker.io/$DOCKERHUB_USERNAME/$DOCKER_IMAGE_NAME:latest &&
+        echo '✅ Déploiement terminé !' &&
+        docker ps -a
+      "
   only:
     - main
