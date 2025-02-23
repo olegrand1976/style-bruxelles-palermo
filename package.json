@@ -26,6 +26,7 @@
     "*.**": "prettier --check --ignore-unknown"
   },
   "dependencies": {
+    "@nuxt/image": "^1.9.0",
     "@nuxt/icon": "^1.10.3",
     "@nuxtjs/i18n": "^9.2.1",
     "@nuxtjs/tailwindcss": "^6.13.1",
@@ -35,7 +36,6 @@
   "devDependencies": {
     "@commitlint/cli": "^19.7.1",
     "@commitlint/config-conventional": "^19.7.1",
-    "@nuxt/image": "^1.9.0",
     "@nuxt/types": "^2.15.8",
     "@types/node": "^22.13.5",
     "@vue/test-utils": "^2.4.6",
