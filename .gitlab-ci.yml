@@ -45,34 +45,29 @@ stages:
 #####################################
 deploy:
   stage: deploy
-  image: docker:20.10.16
-  services:
-    - name: docker:dind
-      alias: docker
-      command: ["--tls=false"]
+  image: docker:20.10.16  # Image avec la CLI Docker, mais sans "docker:dind"
   variables:
-    DOCKER_HOST: tcp://docker:2375
-    DOCKER_TLS_CERTDIR: ""
-    DOCKER_DRIVER: overlay2
+    DOCKER_HOST: unix:///var/run/docker.sock  # Utilisation de Docker de l'hôte
   before_script:
     - apk add --no-cache openssh-client sshpass
-    - echo "🛠 Exécution locale du déploiement (pas de SSH requis)."
+    - echo "🛠 Exécution locale du déploiement (Docker tourne directement sur l'hôte)."
   script:
     - echo "🔄 Connexion à Docker Hub..."
-    - echo "1 - docker ps"    
-    - docker ps -a
     - docker login -u "$DOCKERHUB_USERNAME" -p "$DOCKERHUB_PASSWORD"
+    
     - echo "📥 Téléchargement de la dernière image..."
     - docker pull docker.io/$DOCKERHUB_USERNAME/$DOCKER_IMAGE_NAME:latest
+    
     - echo "🛑 Arrêt et suppression du conteneur existant..."
     - docker stop nuxt-container || true
     - docker rm nuxt-container || true
-    - echo "2 - docker ps"
-    - docker ps -a
+    
     - echo "🚀 Lancement du nouveau conteneur..."
     - docker run -d --restart=always -p 3000:3000 --name nuxt-container docker.io/$DOCKERHUB_USERNAME/$DOCKER_IMAGE_NAME:latest
+    
     - echo "✅ Déploiement terminé !"
-    - echo "3 - docker ps"
+    
+    - echo "📋 Vérification des conteneurs en cours d'exécution..."
     - docker ps -a
   only:
     - main
