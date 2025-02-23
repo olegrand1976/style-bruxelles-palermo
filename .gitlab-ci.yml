@@ -18,7 +18,7 @@ deploy:
     - chmod 600 id_rsa
     - echo "$SERVER_SSH_KNOWN_HOSTS" > known_hosts
     # Ajout de la clé SSH pour le serveur distant
-    - if [ -n "$SERVER_IP" ]; then ssh-keyscan -t ed25519 $SERVER_IP >> known_hosts; else echo "SERVER_IP is not set"; fi
+    - if [ -n "$SSH_HOST" ]; then ssh-keyscan -t ed25519 $SSH_HOST >> known_hosts; else echo "SERVER_IP is not set"; fi
   script:
     - docker login -u "$DOCKERHUB_USERNAME" -p "$DOCKERHUB_PASSWORD"
     # Récupération de la dernière image Docker
