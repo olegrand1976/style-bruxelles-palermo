@@ -7,12 +7,22 @@ stages:
 #####################################
 build:
   stage: build
-  image: docker:20.10.16  # Version avec Docker CLI
+  image: docker:20.10.16  # Image avec Docker CLI
+  tags:
+    - build  # Spécifie d'utiliser le runner BUILD
+  services:
+    - name: docker:dind
+      alias: docker
+      command: ["--tls=false"]
+      privileged: true  # Active le mode privilégié pour DIND
   variables:
-    DOCKER_HOST: "unix:///var/run/docker.sock"  # Permet d'utiliser Docker de l'hôte
+    DOCKER_HOST: "tcp://docker:2375"
+    DOCKER_TLS_CERTDIR: ""
+    DOCKER_DRIVER: "overlay2"
   before_script:
-    - echo "🔧 Vérification de Docker sur l’hôte..."
-    - docker info
+    - echo "⏳ Attente du démarrage de Docker DIND..."
+    - until docker info >/dev/null 2>&1; do echo "⏳ Docker DIND n'est pas encore prêt..."; sleep 3; done
+    - echo "✅ Docker DIND est prêt."
   script:
     - echo "🐳 Construction et push de l’image Docker..."
     - docker build -t docker.io/$DOCKERHUB_USERNAME/$DOCKER_IMAGE_NAME:latest -f Dockerfile.prod .
@@ -27,8 +37,10 @@ build:
 deploy:
   stage: deploy
   image: docker:20.10.16  # Version avec Docker CLI
+  tags:
+    - deploy  # Spécifie d'utiliser le runner DEPLOY
   variables:
-    DOCKER_HOST: "unix:///var/run/docker.sock"
+    DOCKER_HOST: "unix:///var/run/docker.sock"  # ⚠️ Utilise Docker de l’hôte
   before_script:
     - echo "🛠 Déploiement local sur le serveur..."
   script:
