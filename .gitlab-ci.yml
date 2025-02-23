@@ -59,6 +59,7 @@ deploy:
     - echo "🛠 Exécution locale du déploiement (pas de SSH requis)."
   script:
     - echo "🔄 Connexion à Docker Hub..."
+    - echo "1 - docker ps"    
     - docker ps -a
     - docker login -u "$DOCKERHUB_USERNAME" -p "$DOCKERHUB_PASSWORD"
     - echo "📥 Téléchargement de la dernière image..."
@@ -66,10 +67,12 @@ deploy:
     - echo "🛑 Arrêt et suppression du conteneur existant..."
     - docker stop nuxt-container || true
     - docker rm nuxt-container || true
+    - echo "2 - docker ps"
     - docker ps -a
     - echo "🚀 Lancement du nouveau conteneur..."
     - docker run -d --restart=always -p 3000:3000 --name nuxt-container docker.io/$DOCKERHUB_USERNAME/$DOCKER_IMAGE_NAME:latest
     - echo "✅ Déploiement terminé !"
+    - echo "3 - docker ps"
     - docker ps -a
   only:
     - main
