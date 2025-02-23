@@ -1,1 +1,1 @@
-{ "depcheck": { "ignoreMatches": ["@nuxt/icon", "@nuxtjs/i18n", "@nuxtjs/tailwindcss", "@nuxt/image"] } }
+{ "depcheck": { "ignoreMatches": ["@nuxt/icon", "@nuxtjs/i18n", "@nuxtjs/tailwindcss", "@nuxt/image", "@commitlint/cli", "@commitlint/config-conventional"] } }
