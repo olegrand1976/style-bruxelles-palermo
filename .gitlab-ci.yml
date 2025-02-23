@@ -3,10 +3,10 @@
 #####################################
 deploy:
   stage: deploy
-  image: docker:20.10.16           # Version stable avec Docker CLI
+  image: docker:20.10.16
   services:
     - name: docker:dind
-      alias: docker                # Résolution correcte du service Docker
+      alias: docker
       command: ["--tls=false"]
   variables:
     DOCKER_HOST: tcp://docker:2375
@@ -14,23 +14,29 @@ deploy:
     DOCKER_DRIVER: overlay2
   before_script:
     - apk add --no-cache openssh-client sshpass
-    - echo "$SERVER_SSH_KEY" > id_rsa
+    - echo "$SSH_KEY" > id_rsa
     - chmod 600 id_rsa
-    - echo "$SERVER_SSH_KNOWN_HOSTS" > known_hosts
-    # Ajout de la clé SSH pour le serveur distant
+    - echo "$SSH_KNOWN_HOSTS" > known_hosts
     - if [ -n "$SSH_HOST" ]; then ssh-keyscan -t ed25519 $SSH_HOST >> known_hosts; else echo "SERVER_IP is not set"; fi
   script:
+    - cat id_rsa | head -n 2
+    - echo "🛠 Test de connexion SSH..."
+    - ssh -vvv -i id_rsa -o UserKnownHostsFile=known_hosts -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST "echo '✅ Connexion SSH OK'"
+    
+    - echo "🛠 Vérification Docker sur le serveur..."
+    - ssh -i id_rsa -o UserKnownHostsFile=known_hosts -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST "docker ps"
+    
+    - echo "🛠 Déploiement de l'application..."
     - docker login -u "$DOCKERHUB_USERNAME" -p "$DOCKERHUB_PASSWORD"
-    # Récupération de la dernière image Docker
     - docker pull docker.io/$DOCKERHUB_USERNAME/$DOCKER_IMAGE_NAME:latest
-    # Connexion SSH pour exécuter le déploiement
     - >
-      ssh -vvv -i id_rsa -o UserKnownHostsFile=known_hosts -o StrictHostKeyChecking=yes $SERVER_USER@$SERVER_IP "
+      ssh -i id_rsa -o UserKnownHostsFile=known_hosts -o StrictHostKeyChecking=yes $SERVER_USER@$SERVER_IP "
         docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD &&
         docker pull docker.io/$DOCKERHUB_USERNAME/$DOCKER_IMAGE_NAME:latest &&
-        docker stop nuxt-container || true &&
-        docker rm nuxt-container || true &&
-        docker run -d --restart=always -p 3000:3000 --name nuxt-container \
+        docker stop $DOCKER_IMAGE_NAME || true &&
+        docker rm $DOCKER_IMAGE_NAME || true &&
+        docker run -d --restart=always -p 3000:3000 --name $DOCKER_IMAGE_NAME \
+          -v /srv/nuxt:/app/.output \
           docker.io/$DOCKERHUB_USERNAME/$DOCKER_IMAGE_NAME:latest
       "
   after_script:
