@@ -12,6 +12,7 @@ build:
     - name: docker:dind
       alias: docker
       command: ["--tls=false"]
+#      privileged: true  # Ajout pour s'assurer que DinD fonctionne bien
   variables:
     DOCKER_HOST: tcp://docker:2375
     DOCKER_TLS_CERTDIR: ""
@@ -23,9 +24,8 @@ build:
       - node_modules/
       - .npm/
   before_script:
-    - apt-get update && apt-get install -y docker.io
-    - echo "Attente de la résolution DNS pour 'docker'..."
-    - until getent hosts docker; do echo "En attente de 'docker'..."; sleep 1; done
+    - echo "Vérification de la connexion à Docker..."
+    - until docker info > /dev/null 2>&1; do echo "Docker n'est pas encore prêt..."; sleep 1; done
   script:
     - rm -rf node_modules
     - if [ ! -f package-lock.json ]; then npm install --package-lock-only; fi
