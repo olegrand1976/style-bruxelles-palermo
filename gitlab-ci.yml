@@ -12,10 +12,10 @@ build:
     - name: docker:dind
       alias: docker
       command: ["--tls=false"]
-#      privileged: true  # Ajout pour s'assurer que DinD fonctionne bien
   variables:
     DOCKER_HOST: tcp://docker:2375
     DOCKER_TLS_CERTDIR: ""
+    DOCKER_TLS_VERIFY: "0"  # Désactiver la vérification TLS
     DOCKER_DRIVER: overlay2
     NODE_ENV: production
   cache:
@@ -30,11 +30,11 @@ build:
     - rm -rf node_modules
     - npm cache clean --force
     - if [ ! -f package-lock.json ]; then npm install --package-lock-only; fi
-    - npm install
+    - npm ci  # Remplacement de npm install pour éviter les erreurs de version
     - export NODE_OPTIONS=--max_old_space_size=8192
     - npm run build
     - docker build -t docker.io/$DOCKERHUB_USERNAME/$DOCKER_IMAGE_NAME:latest -f Dockerfile.prod .
-    - docker login -u "$DOCKERHUB_USERNAME" -p "$DOCKERHUB_PASSWORD"
+    - echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
     - docker push docker.io/$DOCKERHUB_USERNAME/$DOCKER_IMAGE_NAME:latest
     - docker images
   only:
@@ -52,8 +52,9 @@ deploy:
     - chmod 600 id_rsa
     - echo "$SERVER_SSH_KNOWN_HOSTS" > known_hosts
     - if [ -n "$SERVER_IP" ]; then ssh-keyscan -t ed25519 $SERVER_IP >> known_hosts; else echo "SERVER_IP is not set"; fi
+    - eval $(ssh-agent -s) && ssh-add id_rsa  # Ajout de la clé SSH à l'agent
   script:
-    - docker login -u "$DOCKERHUB_USERNAME" -p "$DOCKERHUB_PASSWORD"
+    - echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
     - docker pull docker.io/$DOCKERHUB_USERNAME/$DOCKER_IMAGE_NAME:latest
     - >
       ssh -i id_rsa -o UserKnownHostsFile=known_hosts -o StrictHostKeyChecking=yes $SERVER_USER@$SERVER_IP "
@@ -63,5 +64,7 @@ deploy:
         docker rm nuxt-container || true &&
         docker run -d --restart=always -p 3000:3000 --name nuxt-container docker.io/$DOCKERHUB_USERNAME/$DOCKER_IMAGE_NAME:latest
       "
+  after_script:
+    - rm -f id_rsa known_hosts  # Nettoyage des fichiers sensibles
   only:
     - main
