@@ -34,7 +34,7 @@ build:
 # 🚀 Étape 2 : Déploiement sur le serveur
 #####################################
 deploy:
-  stage: deploy
+  stage: deploy  
   image: docker:20.10.16  # Version avec Docker CLI
   tags:
     - deploy  # Spécifie d'utiliser le runner DEPLOY
