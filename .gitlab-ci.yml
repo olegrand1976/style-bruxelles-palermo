@@ -28,6 +28,7 @@ build:
     - until getent hosts docker; do echo "En attente de 'docker'..."; sleep 1; done
   script:
     - rm -rf node_modules
+    - npm cache clean --force    
     - if [ ! -f package-lock.json ]; then npm install --package-lock-only; fi
     - npm install
     - export NODE_OPTIONS=--max_old_space_size=8192
