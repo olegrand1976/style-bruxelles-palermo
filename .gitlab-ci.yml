@@ -14,32 +14,15 @@ deploy:
     DOCKER_DRIVER: overlay2
   before_script:
     - apk add --no-cache openssh-client sshpass
-    - echo "$SSH_KEY" > id_rsa
-    - chmod 600 id_rsa
-    - echo "$SSH_KNOWN_HOSTS" > known_hosts
-    - if [ -n "$SSH_HOST" ]; then ssh-keyscan -t ed25519 $SSH_HOST >> known_hosts; else echo "SERVER_IP is not set"; fi
+    - echo "🛠 Connexion directe au serveur (pas de SSH requis)."
   script:
-    - cat id_rsa | head -n 2
-    - echo "🛠 Test de connexion SSH..."
-    - ssh -vvv -i id_rsa -o UserKnownHostsFile=known_hosts -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST "echo '✅ Connexion SSH OK'"
-    
-    - echo "🛠 Vérification Docker sur le serveur..."
-    - ssh -i id_rsa -o UserKnownHostsFile=known_hosts -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST "docker ps"
-    
-    - echo "🛠 Déploiement de l'application..."
     - docker login -u "$DOCKERHUB_USERNAME" -p "$DOCKERHUB_PASSWORD"
     - docker pull docker.io/$DOCKERHUB_USERNAME/$DOCKER_IMAGE_NAME:latest
-    - >
-      ssh -i id_rsa -o UserKnownHostsFile=known_hosts -o StrictHostKeyChecking=yes $SERVER_USER@$SERVER_IP "
-        docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD &&
-        docker pull docker.io/$DOCKERHUB_USERNAME/$DOCKER_IMAGE_NAME:latest &&
-        docker stop $DOCKER_IMAGE_NAME || true &&
-        docker rm $DOCKER_IMAGE_NAME || true &&
-        docker run -d --restart=always -p 3000:3000 --name $DOCKER_IMAGE_NAME \
-          -v /srv/nuxt:/app/.output \
-          docker.io/$DOCKERHUB_USERNAME/$DOCKER_IMAGE_NAME:latest
-      "
-  after_script:
-    - rm -f id_rsa known_hosts
+    # Stop et supprime le container existant s'il tourne déjà
+    - docker stop nuxt-container || true
+    - docker rm nuxt-container || true
+    # Démarre un nouveau container avec la dernière image
+    - docker run -d --restart=always -p 3000:3000 --name nuxt-container \
+        docker.io/$DOCKERHUB_USERNAME/$DOCKER_IMAGE_NAME:latest
   only:
     - main
