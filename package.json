@@ -6,11 +6,6 @@
     "unicorn-magic": "0.1.0"
   },
   "scripts": {
-    "dev": "nuxt dev",
-    "build": "nuxt build",
-    "start": "nuxt start",
-    "generate": "nuxt generate",
-    "prepare": "husky install",
     "lint:style": "stylelint \"**/*.{css,scss,sass,html,vue}\" --ignore-path .gitignore",
     "lint:prettier": "prettier --check .",
     "lint:css": "stylelint '**/*.{css,scss}'",
@@ -18,8 +13,13 @@
     "lint": "npm run lint:style && npm run lint:prettier",
     "lintfix": "prettier --write --list-different . && npm run lint:style -- --fix",
     "preinstall": "npx npm-force-resolutions",
-    "postinstall": "npx husky install",
-    "test": "jest"
+    "postinstall": "if [ -f node_modules/husky/lib/index.js ]; then npx husky install; else echo 'Husky not found, skipping...'; fi",
+    "prepare": "if [ -f node_modules/husky/lib/index.js ]; then npx husky install; else echo 'Husky not found, skipping...'; fi",
+    "test": "jest",
+    "dev": "nuxt dev",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate" 
   },
   "lint-staged": {
     "*.{css,scss,sass,html,vue}": "stylelint",
