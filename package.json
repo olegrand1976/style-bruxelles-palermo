@@ -16,7 +16,7 @@
     "lintfix": "prettier --write --list-different . && npm run lint:style -- --fix",
     "prepare": "husky install",
     "preinstall": "npx npm-force-resolutions",
-    "postinstall": "npm install husky && husky install",  // ✅ Correction ici
+    "postinstall": "npm install husky && husky install",
     "test": "jest"
   },
   "lint-staged": {
