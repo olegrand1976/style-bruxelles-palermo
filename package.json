@@ -16,7 +16,7 @@
     "lintfix": "prettier --write --list-different . && npm run lint:style -- --fix",
     "prepare": "husky install",
     "preinstall": "npx npm-force-resolutions",
-    "postinstall": "patch-package || echo 'Aucun patch trouvé, passage...'",
+    "postinstall": "npm install husky && husky install",  // ✅ Correction ici
     "test": "jest"
   },
   "lint-staged": {
@@ -50,9 +50,9 @@
     "postcss": "^8.4.17",
     "postcss-html": "^1.5.0",
     "prettier": "^2.7.1",
-    "stylelint": "14.16.1",
+    "stylelint": "^16.14.1",
     "stylelint-config-prettier": "^9.0.5",
-    "stylelint-config-recommended-vue": "^1.4.0",
+    "stylelint-config-recommended-vue": "^1.6.0",
     "stylelint-config-standard": "^28.0.0",
     "ts-jest": "^29.0.3",
     "vue-jest": "^0.6.1",

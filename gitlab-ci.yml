@@ -31,7 +31,8 @@ build:
     - rm -rf node_modules
     - npm cache clean --force
     - if [ ! -f package-lock.json ]; then npm install --package-lock-only; fi
-    - npm ci --legacy-peer-deps  # ✅ Correction ici
+    - npm ci --legacy-peer-deps
+    - npm install husky --force
     - export NODE_OPTIONS=--max_old_space_size=8192
     - npm run build
     - docker build -t docker.io/$DOCKERHUB_USERNAME/$DOCKER_IMAGE_NAME:latest -f Dockerfile.prod .
