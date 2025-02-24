@@ -78,7 +78,7 @@
       <p>Les cheveux récupérés sont transformés en solutions éco-responsables, contribuant à la dépollution et à la préservation de l’environnement.</p>
       <p class="text-[#E09550]">Un geste beauté, un impact positif.</p>
       <p>En choisissant Stylé et La Biosthétique, vous optez pour une coiffure d’exception tout en participant activement à une démarche écologique. Parce que chaque coupe peut faire la différence.</p>
-      <button class="border border-[#E09550] px-20 py-3 text-[#E09550] rounded-full bg-white shadow-md">En savoir plus</button>
+      <button class="border border-[#E09550] px-20 py-3 text-[#E09550] rounded-full bg-white shadow-md"><NuxtLink to="/indexDetails/hairRecycle">En savoir plus</NuxtLink></button>
     </div>
   </section>
 
