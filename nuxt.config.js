@@ -38,13 +38,6 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: ['@nuxt/image', '@nuxtjs/tailwindcss', '@nuxt/icon', '@nuxtjs/i18n'],
-  i18n: {
-    locales: [
-      { code: 'en', language: 'en-US' },
-      { code: 'fr', language: 'fr-FR' }
-    ],
-    defaultLocale: 'en',
-  },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},

@@ -130,6 +130,7 @@
 </template>
 
 <script setup lang="ts">
+
 // Code spécifique à la page si nécessaire
 </script>
 

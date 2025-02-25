@@ -14,7 +14,6 @@
             <h2 class="text-[#E09550] text-4xl font-bold">Quand la Beauté Rencontre l’Écologie :</h2>
             <h3 class="text-2xl font-bold">Stylé x La Biosthétique</h3>
             <p>Chez Stylé, nous croyons en une coiffure qui allie élégance et engagement. De Bruxelles à Palerme, notre mission est de sublimer chaque chevelure tout en respectant la planète. C’est pourquoi nous sommes fiers d’annoncer notre collaboration avec La Biosthétique, une marque d’excellence qui partage nos valeurs de soin, d’innovation et de durabilité. Ensemble, nous donnons une seconde vie aux cheveux coupés grâce à un programme de recyclage capillaire révolutionnaire.</p>
-            <button class="border border-[#E09550] px-20 py-3 text-[#E09550] rounded-full bg-white shadow-md hover:bg-[#E09550] hover:text-white transition easy 5s"> <NuxtLink to="/indexDetails/labiosthetique">En savoir plus</NuxtLink></button>
         </div>
     </div>
 
