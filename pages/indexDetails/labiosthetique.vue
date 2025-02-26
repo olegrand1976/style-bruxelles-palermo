@@ -11,9 +11,9 @@
             <p class="absolute bottom-16 text-2xl">the culture of total beauty</p>
         </div>
         <div class="w-1/2 space-y-10 px-20">
-            <h2 class="text-[#E09550] text-4xl font-bold">Quand la Beauté Rencontre l’Écologie :</h2>
-            <h3 class="text-2xl font-bold">Stylé x La Biosthétique</h3>
-            <p>Chez Stylé, nous croyons en une coiffure qui allie élégance et engagement. De Bruxelles à Palerme, notre mission est de sublimer chaque chevelure tout en respectant la planète. C’est pourquoi nous sommes fiers d’annoncer notre collaboration avec La Biosthétique, une marque d’excellence qui partage nos valeurs de soin, d’innovation et de durabilité. Ensemble, nous donnons une seconde vie aux cheveux coupés grâce à un programme de recyclage capillaire révolutionnaire.</p>
+            <h2 class="text-[#E09550] text-4xl font-bold">{{ $t('biosthetique.section1.title') }}</h2>
+            <h3 class="text-2xl font-bold">{{ $t('biosthetique.section1.subtitle') }}</h3>
+            <p>{{ $t('biosthetique.section1.description') }}</p>
         </div>
     </div>
 
@@ -23,24 +23,13 @@
 
     <div class="my-10 px-20 flex justify-between items-center mb-40">
         <div class="w-1/2 space-y-10 px-20">
-            <h2 class="text-[#E09550] text-4xl font-bold">Stylé, de Bruxelles à Palermo</h2>
-            <h3 class="text-2xl font-bold">L’art de la coiffure sans frontières</h3>
-            <p>2344 kilomètres et 11 ans d’expériences les séparaient, mais leur passion les a réunies. <br>
-                Jenny, bruxelloise, et Letizia, originaire de Palerme, <br>
-                partagent une vision commune de la coiffure : élégance, savoir-faire et authenticité. <br>
-                Arrivée en Belgique en 2017, Letizia croise le chemin de Jenny dans un salon de Watermael-Boitsfort. Très vite, une alchimie naturelle s’installe entre elles, <br>
-                tant sur le plan professionnel que personnel. <br>
-                Ce qui n’était au départ qu’une belle rencontre est devenu une évidence : créer ensemble un espace où chaque client se sent unique et sublimé. 
-                </p>
-            <p>C’est ainsi qu’est né "Stylé, de Bruxelles à Palermo". <br>
-                Depuis le 1ᵉʳ juillet 2020, leur salon situé à Auderghem est un véritable écrin dédié à la beauté capillaire, où le savoir-faire italien et la précision belge se conjuguent harmonieusement. <br>
-                Que vous souhaitiez une coupe tendance, une coloration éclatante ou un soin expert, <br>
-                Jenny et Letizia vous accueillent avec passion et bienveillance. <br>
-                Parce que votre style est notre signature.
-            </p>
+            <h2 class="text-[#E09550] text-4xl font-bold">{{ $t('biosthetique.section2.title') }}</h2>
+            <h3 class="text-2xl font-bold">{{ $t('biosthetique.section2.subtitle') }}</h3>
+            <p class="py-4">{{ $t('biosthetique.section2.description1.part1') }}<br>{{ $t('biosthetique.section2.description1.part2') }}<br> {{ $t('biosthetique.section2.description1.part3') }}</p>
+            <p>{{ $t('biosthetique.section2.description2.part1') }} <br> {{ $t('biosthetique.section2.description2.part2') }} <br> {{ $t('biosthetique.section2.description2.part3') }}</p>
             <div class="space-x-10">
-                <button class="border border-[#E09550] px-20 py-3 text-[#E09550] rounded-full bg-white shadow-md hover:bg-[#E09550] hover:text-white transition easy 5s">Contactez-nous</button>
-                <button onclick="window.open('https://client.optios.net/online_booking.html?/7827', '_blank', 'noopener')" class="border px-10 py-3 bg-[#E09550] text-white rounded-full shadow-md hover:bg-white hover:text-[#E09550] transition ease-in-out duration-500">Rendez-vous en ligne</button>
+                <button class="border border-[#E09550] px-20 py-3 text-[#E09550] rounded-full bg-white shadow-md hover:bg-[#E09550] hover:text-white transition easy 5s">{{ $t('buttons.contact')}}</button>
+                <button onclick="window.open('https://client.optios.net/online_booking.html?/7827', '_blank', 'noopener')" class="border px-10 py-3 bg-[#E09550] text-white rounded-full shadow-md hover:bg-white hover:text-[#E09550] transition ease-in-out duration-500">{{ $t('buttons.rendezvous')}}</button>
             </div>
         </div>
         <div class="w-1/2">

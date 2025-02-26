@@ -3,9 +3,9 @@
     <nav class="flex justify-between items-center bg-white px-20 py-3 fixed w-full top-0 z-20 shadow-xl">
       <img src="/images/logo-nav.svg" alt="Stylé">
       <ul class="flex list-none gap-8 items-center m-0 p-0">
-        <li><NuxtLink to="/" class="nav-link">Qui sommes-nous ?</NuxtLink></li>
-        <li><NuxtLink to="/services" class="nav-link">Services</NuxtLink></li>
-        <li><NuxtLink to="/contact" class="nav-link">Contact</NuxtLink></li>
+        <li><NuxtLink to="/" class="nav-link">{{ $t('accueil.title') }}</NuxtLink></li>
+        <li><NuxtLink to="/services" class="nav-link">{{ $t('services.title')}}</NuxtLink></li>
+        <li><NuxtLink to="/contact" class="nav-link">{{ $t('contact.title')}}</NuxtLink></li>
         <li><a href="https://client.optios.net/online_booking.html?/7827" target="_blank" rel="noopener" class="border px-8 py-3 bg-[#E09550] text-white rounded-full hover:bg-white hover:text-[#E09550] transition easy 5s">Rendez-vous en ligne</a></li>
         <li>
           <LanguageToggle />

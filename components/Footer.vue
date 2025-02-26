@@ -2,11 +2,11 @@
     <footer>
       <div class="px-20 py-4 border shadow-sm flex justify-between items-center">
         <div class="space-y-5">
-          <h2 class="font-bold">Coordonnées <br> Stylé de Bruxelles a Palermo</h2>
+          <h2 class="font-bold">{{ $t('footer.text1') }} <br> Stylé de Bruxelles a Palermo</h2>
           <p>Rue de la Résistance, 92/A <br> 7131 Bruxelles, Belgique</p>
-          <p class="font-bold">Téléphone : <span class="font-normal">02/ 660 07 08</span></p>
-          <p class="font-bold">Email : <a href="#" class="font-normal text-blue-500">info@stylédebruxelles.be</a></p>
-          <p class="font-bold">Horaires d’ouverture <br> <span class="font-normal">7 jours /7 jours</span></p>
+          <p class="font-bold">{{ $t('footer.text2') }} : <span class="font-normal">02/ 660 07 08</span></p>
+          <p class="font-bold">{{ $t('footer.text3') }}  : <a href="#" class="font-normal text-blue-500">info@stylédebruxelles.be</a></p>
+          <p class="font-bold">{{ $t('footer.text4') }}  <br> <span class="font-normal">{{ $t('footer.text5') }} </span></p>
         </div>
         <img src="/images/style_noir.svg" alt="logo" class="w-[300px]">
         <div>
@@ -24,8 +24,8 @@
         </div>
       </div>
       <div class="text-center">
-        <div class="p-4 bg-[#E09550] text-white">Site commercialisé par LL-IT Software & Computer : www.ll-it-sc.be</div>
-        <div class="p-4">&copy; 2025 Stylé. Tous droits réservés.</div>
+        <div class="p-4 bg-[#E09550] text-white">{{ $t('footer.text6') }} </div>
+        <div class="p-4">{{ $t('footer.text7') }} </div>
       </div>
     </footer>
   </template>

@@ -1,4 +1,4 @@
-export default {
+export default defineNuxtConfig({
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
 
@@ -39,9 +39,18 @@ export default {
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: ['@nuxt/image', '@nuxtjs/tailwindcss', '@nuxt/icon', '@nuxtjs/i18n'],
 
+  i18n: {
+    strategy: 'prefix_except_default',
+    defaultLocale: 'fr',
+    locales: [
+      { code: 'en', file: 'en.json', name: 'English' },
+      { code: 'fr', files: ['french/accueil.json','french/services.json','french/contact.json','french/footer.json','french/biosthetique.json','french/hairrecycle.json','french/button.json'], name: 'Français' }
+    ],
+  },
+
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
 
   compatibilityDate: '2025-02-14',
   
-};
+});

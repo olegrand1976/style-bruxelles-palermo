@@ -1,0 +1,27 @@
+{
+    "hairrecycle" : {
+        "section1": {
+            "title": "Pourquoi jeter quand on peut réutiliser ?",
+            "subtitle": "Stylé x Haire recycle",
+            "description": {
+                "part1":"Les cheveux récupérés sont transformés en solutions éco-responsables, contribuant à la dépollution et à la préservation de l’environnement.",
+                "part2": "Un geste beauté, un impact positif.",
+                "part3": "En choisissant Stylé et La Biosthétique, vous optez pour une coiffure d’exception tout en participant activement à une démarche écologique. Parce que chaque coupe peut faire la différence."
+            } 
+        },
+        "section2": {
+            "part1": "Contactez-nous",
+            "part2": "pour un rendez-vous !"
+        },
+        "section3" : {
+            "title": "Quand la Beauté Rencontre l’Écologie",
+            "subtitle" : "Stylé x La Biosthétique",
+            "description" : "Chez Stylé, nous croyons en une coiffure qui allie élégance et engagement. De Bruxelles à Palerme, notre mission est de sublimer chaque chevelure tout en respectant la planète. C’est pourquoi nous sommes fiers d’annoncer notre collaboration avec La Biosthétique, une marque d’excellence qui partage nos valeurs de soin, d’innovation et de durabilité. Ensemble, nous donnons une seconde vie aux cheveux coupés grâce à un programme de recyclage capillaire révolutionnaire."
+        },
+        "section4" : {
+            "title": "Quand la Beauté Rencontre l’Écologie",
+            "subtitle" : "Stylé x La Biosthétique",
+            "description" : "Chez Stylé, nous croyons en une coiffure qui allie élégance et engagement. De Bruxelles à Palerme, notre mission est de sublimer chaque chevelure tout en respectant la planète. C’est pourquoi nous sommes fiers d’annoncer notre collaboration avec La Biosthétique, une marque d’excellence qui partage nos valeurs de soin, d’innovation et de durabilité. Ensemble, nous donnons une seconde vie aux cheveux coupés grâce à un programme de recyclage capillaire révolutionnaire."
+        }
+    }
+}
