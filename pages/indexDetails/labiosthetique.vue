@@ -6,9 +6,8 @@
     <div class="w-4/5 h-4 bg-[#E09550] rounded-r-lg"></div>
 
     <div class="my-20 px-20 flex justify-between items-center">
-        <div class="uppercase border-2 border-[#E09550] w-1/2 h-[600px] flex flex-col justify-center items-center text-center relative">
-            <h1 class="text-6xl font-bold leading-[0.5] scale-y-150 relative">la biosthetique <br><span class="font-normal text-2xl">paris</span></h1>
-            <p class="absolute bottom-16 text-2xl">the culture of total beauty</p>
+        <div class="border-2 border-[#E09550] w-1/2 h-full">
+            <img src="/images/biosthetique.svg" alt="la biosthetique" class="object-cover w-full">
         </div>
         <div class="w-1/2 space-y-10 px-20">
             <h2 class="text-[#E09550] text-4xl font-bold">{{ $t('biosthetique.section1.title') }}</h2>

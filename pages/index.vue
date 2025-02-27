@@ -60,9 +60,8 @@
       <p>{{ $t('accueil.section4.description') }}</p>
      <button class="border border-[#E09550] px-20 py-3 text-[#E09550] rounded-full bg-white shadow-md hover:bg-[#E09550] hover:text-white transition easy 5s"> <NuxtLink to="/indexDetails/labiosthetique">{{ $t('buttons.savoirplus') }}</NuxtLink></button>
     </div>
-    <div class="uppercase border-2 border-[#E09550] w-1/2 h-[600px] flex flex-col justify-center items-center text-center relative">
-      <h1 class="text-6xl font-bold leading-[0.5] scale-y-150 relative">la biosthetique <br><span class="font-normal text-2xl">paris</span></h1>
-      <p class="absolute bottom-16 text-2xl">the culture of total beauty</p>
+    <div class="border-2 border-[#E09550] w-1/2 h-full">
+      <img src="/images/biosthetique.svg" alt="la biosthetique" class="object-cover w-full">
     </div>
   </section>
 

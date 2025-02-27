@@ -1,5 +1,5 @@
 <template>
-  <div class="h-[100vh] w-[100vw] m-auto relative grid place-items-center overflow-hidden">
+  <div class="h-[100vh] w-full m-auto relative grid place-items-center overflow-hidden">
     <div class="slides">
       <div class="slide" v-for="(img, index) in images" :key="index">
         <img :src="img" :alt="'slide' + (index + 1)" class="w-full h-[100vh] object-cover" />

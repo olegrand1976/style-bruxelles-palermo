@@ -43,8 +43,8 @@ export default defineNuxtConfig({
     strategy: 'prefix_except_default',
     defaultLocale: 'fr',
     locales: [
-      { code: 'en', file: 'en.json', name: 'English' },
-      { code: 'fr', files: ['french/accueil.json','french/services.json','french/contact.json','french/footer.json','french/biosthetique.json','french/hairrecycle.json','french/button.json'], name: 'Français' }
+      { code: 'fr', files: ['french/accueil.json','french/services.json','french/contact.json','french/footer.json','french/biosthetique.json','french/hairrecycle.json','french/button.json'], name: 'Français' },
+      { code: 'nl', files: ['nl/accueil.json','nl/services.json','nl/contact.json','nl/footer.json','nl/biosthetique.json','nl/hairrecycle.json','nl/button.json'], name: 'Néerlandais' }
     ],
   },
 
