@@ -3,10 +3,11 @@
       <div class="px-20 py-4 border shadow-sm flex justify-between items-center">
         <div class="space-y-5">
           <h2 class="font-bold">{{ $t('footer.text1') }} <br> Stylé de Bruxelles a Palermo</h2>
-          <p>Rue de la Résistance, 92/A <br> 7131 Bruxelles, Belgique</p>
+          <p>Avenue Jean Van Horenbeeck 1 <br> 1160 Bruxelles</p>
           <p class="font-bold">{{ $t('footer.text2') }} : <span class="font-normal">02/ 660 07 08</span></p>
-          <p class="font-bold">{{ $t('footer.text3') }}  : <a href="#" class="font-normal text-blue-500">info@stylédebruxelles.be</a></p>
+          <p class="font-bold">{{ $t('footer.text3') }}  : <a href="#" class="font-normal text-blue-500">style.bxl.plm@gmail.com</a></p>
           <p class="font-bold">{{ $t('footer.text4') }}  <br> <span class="font-normal">{{ $t('footer.text5') }} </span></p>
+          <p>{{ $t('footer.text8') }} </p>
         </div>
         <img src="/images/style_noir.svg" alt="logo" class="w-[300px]">
         <div>

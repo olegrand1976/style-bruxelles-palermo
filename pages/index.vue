@@ -24,27 +24,23 @@
     <div class="grid grid-cols-3 gap-10 my-20">
       <div class="relative">
         <img src="/images/img1_accueil.svg" alt="image1" class="w-full object-cover rounded-t-3xl">
-        <p class=" text-center text-2xl font-bold py-5 text-white bg-white/50 absolute bottom-10 w-full">{{ $t('accueil.section2.image1') }}</p>
       </div>
       <div class="relative">
         <img src="/images/img2_accueil.svg" alt="image2" class="w-full object-cover rounded-t-3xl">
-        <p class=" text-center text-2xl font-bold py-5 text-white bg-white/50 absolute bottom-10 w-full">{{ $t('accueil.section2.image2') }}</p>
       </div>
       <div class="relative">
         <img src="/images/img3_accueil.svg" alt="image3" class="w-full object-cover rounded-t-3xl">
-        <p class=" text-center text-2xl font-bold py-5 text-white bg-white/50 absolute bottom-10 w-full">{{ $t('accueil.section2.image3') }}</p>
       </div>
     </div>
-    <div class="text-center text-5xl leading-normal font-bold"> {{ $t('accueil.section2.part1') }} <br> {{ $t('accueil.section2.part2') }}  <br> n{{ $t('accueil.section2.part3') }} <br> {{ $t('accueil.section2.part4') }}
+    <div class="text-center text-5xl leading-normal font-bold"> {{ $t('accueil.section2.part1') }} <br> {{ $t('accueil.section2.part2') }}  <br>{{ $t('accueil.section2.part3') }}
     </div>
   </section>
 
   <section class="relative py-20">
-    <img src="/images/ticket.svg" alt="ticket" class="absolute top-16 left-14">
     <img src="/images/img_biosthetique.svg" alt="biosthetique" class="w-full h-auto">
     <img src="/images/logo-coiffure.svg" alt="logo" class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[500px]">
-    <img src="/images/cheveux.svg" alt="cheveux" class="absolute bottom-10 z-10">
-    <div class="w-full flex items-center justify-end gap-20 bg-[#E09550] py-12 px-24 absolute bottom-10">
+    <img src="/images/cheveux.svg" alt="cheveux" class="absolute bottom-40 z-10">
+    <div class="w-full flex items-center justify-end gap-20 bg-[#E09550] py-12 px-24 absolute bottom-40">
       <p class="text-5xl text-white font-bold leading-normal">{{ $t('accueil.section3.part1') }} <br> {{ $t('accueil.section3.part2') }}</p>
       <div class="flex flex-col gap-6">
         <button onclick="window.open('https://client.optios.net/online_booking.html?/7827', '_blank', 'noopener')" class="border px-10 py-3 bg-[#E09550] text-white rounded-full shadow-md hover:bg-white hover:text-[#E09550] transition ease-in-out duration-500">{{ $t('buttons.rendezvous') }}</button>
