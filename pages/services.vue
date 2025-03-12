@@ -1,7 +1,7 @@
 <template>
   <section class="services">
     <div class="relative">
-      <img src="/images/slide2.svg" alt="image2" class="w-full object-cover">
+      <img src="/images/slide2.svg" alt="image2" class="w-full sm:h-[100vh] xl:h-auto object-cover">
       <img src="/images/logo-coiffure.svg" alt="logo" class="sm:hidden xl:block absolute top-40 right-0">
     </div>
     <div class="w-4/5 h-4 bg-[#E09550] rounded-r-lg"></div>
