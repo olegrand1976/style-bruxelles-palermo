@@ -55,7 +55,6 @@
         </div>
         <button onclick="window.open('https://client.optios.net/online_booking.html?/7827', '_blank', 'noopener')" class="w-64 border border-[#E09550 py-3 text-[#E09550] rounded-full bg-white shadow-md hover:bg-[#E09550] hover:text-white transition easy 5s">{{ $t('buttons.reservation') }}</button>
       </div>
-
     </div>
   </section>
 
