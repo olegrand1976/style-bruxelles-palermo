@@ -17,13 +17,26 @@
       }
     },
     "section2": {
+      "image1":{
+        "text1":"60€",
+        "text2":"Pack individuelle"
+      },
+      "image2":{
+        "text1":"100€",
+        "text2":"Pack gold"
+      },
+      "image3":{
+        "text1":"200€",
+        "text2":"Pack royal"
+      },
       "part1":"Stylé s'engage pour une beauté durable !",
       "part2":"Grâce à notre collaboration avec La Biosthétique,",
       "part3":"Nous donnons à vos cheveux les soins les plus adaptés."
     },
     "section3": {
-      "part1": "Contactez-nous",
-      "part2": "pour un rendez-vous !"
+      "part1": "Du lundi au vendredi de 9h à 18h",
+      "part2": "Samedi",
+      "part3": "pour les mariage uniquement sur réservation"
     },
     "section4": {
       "title": "Quand la Beauté Rencontre l’Écologie :",

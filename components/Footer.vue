@@ -7,7 +7,7 @@
           <p class="font-bold">{{ $t('footer.text2') }} : <span class="font-normal">02/ 660 07 08</span></p>
           <p class="font-bold">{{ $t('footer.text3') }}  : <a href="#" class="font-normal text-blue-500">style.bxl.plm@gmail.com</a></p>
           <p class="font-bold">{{ $t('footer.text4') }}  <br> <span class="font-normal">{{ $t('footer.text5') }} </span></p>
-          <p>{{ $t('footer.text8') }} </p>
+          <p><span class="font-bold">{{ $t('footer.text8') }}</span> {{ $t('footer.text9') }} </p>
         </div>
         <img src="/images/style_noir.svg" alt="logo" class="w-[300px]">
         <div>

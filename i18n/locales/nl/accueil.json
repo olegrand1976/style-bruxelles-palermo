@@ -17,13 +17,26 @@
       }
     },
     "section2": {
+      "image1":{
+        "text1":"60€",
+        "text2":"Individueel pakket"
+      },
+      "image2":{
+        "text1":"100€",
+        "text2":"Goudpakket"
+      },
+      "image3":{
+        "text1":"200€",
+        "text2":"Koninklijk Pak"
+      },
       "part1": "Stylé zet zich in voor duurzame schoonheid!",
       "part2": "Dankzij onze samenwerking met La Biosthétique",
       "part3": "Wij geven uw haar de meest geschikte verzorging."
     },
     "section3": {
-      "part1": "Contacteer ons",
-      "part2": "voor een afspraak!"
+      "part1": "Maandag t/m vrijdag van 9.00 tot 18.00 uur.",
+      "part2": "Zaterdag",
+      "part3": "alleen voor bruiloften op reservering"
     },
     "section4": {
       "title": "Wanneer Schoonheid Ecologie Ontmoet:",
