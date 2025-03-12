@@ -1,6 +1,10 @@
 {
   "accueil": {
     "title": "Wie zijn wij ?",
+    "horaire": {
+      "jour": "Maandag tot en met vrijdag",
+      "heure": "van 9.00 tot 18.00 uur"
+    },
     "section1": {
       "title": "Stylé van Brussel tot Palermo",
       "subtitle": "De kunst van grenzeloze haarstyling",

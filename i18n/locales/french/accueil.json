@@ -1,6 +1,10 @@
 {
   "accueil": {
     "title": "Qui sommes-nous ?",
+    "horaire": {
+      "jour": "Du lundi au vendredi",
+      "heure": "de 9h à 18h"
+    },
     "section1": {
       "title": "Stylé de Bruxelles à Palermo",
       "subtitle": "L’art de la coiffure sans frontières",

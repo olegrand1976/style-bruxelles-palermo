@@ -1,6 +1,6 @@
 <template>
     <footer>
-      <div class="px-20 py-4 border shadow-sm flex justify-between items-center">
+      <div class="px-20 py-4 border shadow-sm sm:hidden xl:flex justify-between items-center">
         <div class="space-y-5">
           <h2 class="font-bold">{{ $t('footer.text1') }} <br> Stylé de Bruxelles a Palermo</h2>
           <p>Avenue Jean Van Horenbeeck 1 <br> 1160 Bruxelles</p>
