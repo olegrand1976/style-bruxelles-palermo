@@ -10,7 +10,7 @@
         </ul>
         <button class="sm:absolute xl:relative sm:top-28 xl:top-auto sm:right-1/3 xl:right-auto">
           <a href="https://client.optios.net/online_booking.html?/7827" target="_blank" rel="noopener"
-            class="px-8 py-3 bg-[#E09550] text-white rounded-full hover:bg-white hover:text-[#E09550] transition easy 5s">
+            class="border px-8 py-3 bg-[#E09550] text-white rounded-full hover:bg-white hover:text-[#E09550] transition easy 5s">
             {{ $t('buttons.rendezvous') }}
           </a>
         </button>

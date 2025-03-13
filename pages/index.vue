@@ -107,22 +107,41 @@
       </div>
     </div>
     <div class="sm:w-full xl:w-1/2">
-      <img src="/images/img_coiffure.svg" alt="img_coiffure" class="w-full" style="border-top-right-radius:200px">
+      <img :src="selectedImage" alt="img_coiffure" class="w-full h-auto" style="border-top-right-radius:200px">
     </div>
   </section>
 
   <section class="flex sm:justify-normal xl:justify-end sm:px-10 xl:px-20 mb-20">
     <div class="sm:w-full xl:w-1/2 grid grid-cols-3 gap-6">
-      <img src="/images/im1.svg" alt="image1" class="w-full object-cover rounded-3xl">
-      <img src="/images/im2.svg" alt="image2" class="w-full object-cover rounded-3xl">
-      <img src="/images/im2.svg" alt="image3" class="w-full object-cover rounded-3xl">
+      <img
+        v-for="(image, index) in filteredImages"
+        :key="index"
+        :src="image"
+        alt="images_coiffure"
+        class="h-full w-full object-cover rounded-3xl cursor-pointer"
+        @click="selectImage(image)"
+      />
     </div>
   </section>
 </template>
 
-<script setup lang="ts">
+<script setup>
 
-// Code spécifique à la page si nécessaire
+import { ref } from 'vue';
+
+const images = [
+  '/images/img_coiffure.svg',
+  '/images/im1.svg',
+  '/images/im2.svg',
+  '/images/im3.svg'
+];
+const selectedImage = ref(images[0]);
+const selectImage = (image) => {
+  selectedImage.value = image;
+};
+const filteredImages = computed(() => {
+  return images.filter(image => image !== selectedImage.value);
+});
 </script>
 
 <style scoped>
