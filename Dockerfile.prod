@@ -12,7 +12,7 @@ COPY . .
 RUN npm run build
 
 # Étape 2 : Runtime stage (exécution en production)
-FROM node:18-alpine
+FROM node:20-alpine
 WORKDIR /app
 
 # Copier uniquement les fichiers essentiels
