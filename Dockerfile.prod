@@ -1,28 +1,29 @@
 # Étape 1 : Build stage
-FROM node:18-alpine AS builder
+FROM node:20-alpine AS builder
 WORKDIR /app
+
+# Copier uniquement les fichiers essentiels
 COPY package.json package-lock.json* ./
 
-# Installation complète des dépendances
-RUN npm ci
+# Installation des dépendances en mode legacy
+RUN npm install --legacy-peer-deps
 RUN npm install husky patch-package
 
-# Copier le projet et builder l'application
+# Copier le reste du projet et builder l'application
 COPY . .
 RUN npm run build
 
 # Étape 2 : Runtime stage (exécution en production)
 FROM node:20-alpine
+
 WORKDIR /app
 
-# Copier uniquement les fichiers essentiels
+# Copier uniquement les fichiers essentiels pour l'exécution
 COPY --from=builder /app/package.json /app/package-lock.json ./
 COPY --from=builder /app/.output ./.output
 
-# Installation complète des dépendances
-RUN npm ci --legacy-peer-deps
-RUN npm install husky --save-dev
-RUN npx husky install
+# Installation des dépendances runtime uniquement (sans devDependencies)
+RUN npm install --production --legacy-peer-deps
 
 # Ajouter un utilisateur et un groupe non-root
 RUN addgroup -S appgroup && adduser -S appuser -G appgroup
