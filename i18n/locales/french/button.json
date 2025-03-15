@@ -1,0 +1,9 @@
+{
+    "buttons": {
+        "contact" : "Contactez-nous",
+        "rendezvous" : "Rendez-vous en ligne",
+        "savoirplus" : "En savoir plus",
+        "envoyer" : "Envoyer",
+        "reservation": "Réservation"
+    }
+}

@@ -1,4 +1,4 @@
-export default {
+export default defineNuxtConfig({
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
 
@@ -38,12 +38,14 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: ['@nuxt/image', '@nuxtjs/tailwindcss', '@nuxt/icon', '@nuxtjs/i18n'],
+
   i18n: {
+    strategy: 'prefix_except_default',
+    defaultLocale: 'fr',
     locales: [
-      { code: 'en', language: 'en-US' },
-      { code: 'fr', language: 'fr-FR' }
+      { code: 'fr', files: ['french/accueil.json','french/services.json','french/contact.json','french/footer.json','french/biosthetique.json','french/hairrecycle.json','french/button.json'], name: 'Français' },
+      { code: 'nl', files: ['nl/accueil.json','nl/services.json','nl/contact.json','nl/footer.json','nl/biosthetique.json','nl/hairrecycle.json','nl/button.json'], name: 'Néerlandais' }
     ],
-    defaultLocale: 'en',
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
@@ -51,4 +53,4 @@ export default {
 
   compatibilityDate: '2025-02-14',
   
-};
+});

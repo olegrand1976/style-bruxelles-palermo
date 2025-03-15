@@ -1,0 +1,12 @@
+{
+  "contact": {
+    "title": "Contact",
+    "form": {
+      "name": "Nom",
+      "firstname": "Prénoms",
+      "mail" : "E-mail",
+      "phone" : "Phone",
+      "message" : "Messages"
+    }
+  }
+}

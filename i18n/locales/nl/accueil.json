@@ -1,0 +1,75 @@
+{
+  "accueil": {
+    "title": "Wie zijn wij ?",
+    "horaire": {
+      "jour": "Maandag tot en met vrijdag",
+      "heure": "van 9.00 tot 18.00 uur"
+    },
+    "section1": {
+      "title": "Stylé van Brussel tot Palermo",
+      "subtitle": "De kunst van grenzeloze haarstyling",
+      "description1": {
+        "part1": "2344 kilometer en 11 jaar ervaring scheidden hen, maar hun passie bracht hen samen. Jenny, uit Brussel, en Letizia, afkomstig uit Palermo",
+        "part2": "delen een gemeenschappelijke visie op haarstyling: elegantie, vakmanschap en authenticiteit. Letizia arriveerde in België in 2017 en ontmoette Jenny in een salon in Watermaal-Bosvoorde. Al snel ontstond er een natuurlijke chemie tussen hen,", 
+        "part3": "zowel professioneel als persoonlijk.", 
+        "part4": "Wat aanvankelijk slechts een mooie ontmoeting was, werd een vanzelfsprekendheid: samen een ruimte creëren waar elke klant zich uniek en schitterend voelt."
+      },
+      "description2": {
+        "part1": "Zo werd \"Stylé van Brussel tot Palermo\" geboren.",
+        "part2": "Sinds 1 juli 2020 is hun salon in Oudergem een echte parel gewijd aan haarverzorging, waar Italiaanse expertise en Belgische precisie harmonieus samenkomen. Of u nu een trendy kapsel, een stralende kleuring of een deskundige behandeling wilt, Jenny en Letizia verwelkomen u met passie en vriendelijkheid.", 
+        "part3": "Omdat uw stijl onze handtekening is."
+      }
+    },
+    "section2": {
+      "image1":{
+        "text1":"60€",
+        "text2":"Individueel pakket"
+      },
+      "image2":{
+        "text1":"100€",
+        "text2":"Goudpakket"
+      },
+      "image3":{
+        "text1":"200€",
+        "text2":"Koninklijk Pak"
+      },
+      "part1": "Stylé zet zich in voor duurzame schoonheid!",
+      "part2": "Dankzij onze samenwerking met La Biosthétique",
+      "part3": "Wij geven uw haar de meest geschikte verzorging."
+    },
+    "section3": {
+      "part1": "Maandag t/m vrijdag van 9.00 tot 18.00 uur.",
+      "part2": "Zaterdag",
+      "part3": "alleen voor bruiloften op reservering"
+    },
+    "section4": {
+      "title": "Wanneer Schoonheid Ecologie Ontmoet:",
+      "subtitle": "Stylé x La Biosthétique",
+      "description": "Bij Stylé geloven we in haarverzorging die elegantie en betrokkenheid combineert. Van Brussel tot Palermo is onze missie om elk kapsel te verfraaien terwijl we de planeet respecteren. Daarom zijn we trots om onze samenwerking met La Biosthétique aan te kondigen, een merk van uitmuntendheid dat onze waarden van zorg, innovatie en duurzaamheid deelt. Samen geven we afgeknipt haar een tweede leven dankzij een revolutionair haarrecyclingprogramma."
+    },
+    "section5": {
+      "title": "Waarom weggooien als je kunt hergebruiken?",
+      "subtitle": "Stylé x Haar recycleert",
+      "description": {
+        "part1": "Het verzamelde haar wordt omgezet in milieuvriendelijke oplossingen, die bijdragen aan de ontgifting en het behoud van het milieu.",
+        "part2": "Een schoonheidsgebaar, een positieve impact.",
+        "part3": "Door te kiezen voor Stylé en La Biosthétique, kiest u voor uitzonderlijke haarverzorging en draagt u actief bij aan een ecologische aanpak. Want elke knipbeurt kan het verschil maken."
+      }
+    },
+    "section6": {
+      "title": "Stylé van Brussel tot Palermo",
+      "subtitle": "De kunst van grenzeloze haarstyling",
+      "description1": {
+        "part1": "2344 kilometer en 11 jaar ervaring scheidden hen, maar hun passie bracht hen samen. Jenny, uit Brussel, en Letizia, afkomstig uit Palermo",
+        "part2": "delen een gemeenschappelijke visie op haarstyling: elegantie, vakmanschap en authenticiteit. Letizia arriveerde in België in 2017 en ontmoette Jenny in een salon in Watermaal-Bosvoorde. Al snel ontstond er een natuurlijke chemie tussen hen,", 
+        "part3": "zowel professioneel als persoonlijk.", 
+        "part4": "Wat aanvankelijk slechts een mooie ontmoeting was, werd een vanzelfsprekendheid: samen een ruimte creëren waar elke klant zich uniek en schitterend voelt."
+      },
+      "description2": {
+        "part1": "Zo werd \"Stylé van Brussel tot Palermo\" geboren.",
+        "part2": "Sinds 1 juli 2020 is hun salon in Oudergem een echte parel gewijd aan haarverzorging, waar Italiaanse expertise en Belgische precisie harmonieus samenkomen. Of u nu een trendy kapsel, een stralende kleuring of een deskundige behandeling wilt, Jenny en Letizia verwelkomen u met passie en vriendelijkheid.", 
+        "part3": "Omdat uw stijl onze handtekening is."
+      }
+    }
+  }
+}

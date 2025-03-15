@@ -1,0 +1,13 @@
+{
+  "contact": {
+      "title": "Contact",
+      "form": {
+          "name": "Naam",
+          "firstname": "Voornaam",
+          "mail": "E-mail",
+          "phone": "Telefoon",
+          "message": "Bericht"
+      }
+  }
+}
+  
