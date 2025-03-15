@@ -5,11 +5,12 @@ WORKDIR /app
 # Copier uniquement les fichiers essentiels
 COPY package.json package-lock.json* ./
 
-# Installation des dépendances en mode legacy
-RUN npm install --legacy-peer-deps
+# Installation des dépendances (inclure TypeScript explicitement)
+RUN npm install --legacy-peer-deps typescript
 
-# Vérifier si Nuxt Kit est bien installé
+# Vérifier si Nuxt Kit et TypeScript sont bien installés
 RUN npm list @nuxt/kit || npm install @nuxt/kit --legacy-peer-deps
+RUN npm list typescript || npm install typescript --legacy-peer-deps
 
 # Copier le reste du projet et builder l'application
 COPY . .
@@ -27,8 +28,9 @@ COPY --from=builder /app/.output ./.output
 # Installation des dépendances runtime uniquement (sans devDependencies)
 RUN npm install --production --legacy-peer-deps
 
-# Vérifier si Nuxt Kit est bien installé
+# Vérifier si Nuxt Kit et TypeScript sont bien installés
 RUN npm list @nuxt/kit || npm install @nuxt/kit --legacy-peer-deps
+RUN npm list typescript || npm install typescript --legacy-peer-deps
 
 # Ajouter un utilisateur et un groupe non-root
 RUN addgroup -S appgroup && adduser -S appuser -G appgroup
