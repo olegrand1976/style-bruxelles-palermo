@@ -8,8 +8,8 @@ stages:
 build:
   stage: build
   image: docker:20.10.16  # Image avec Docker CLI
-  tags:
-    - RUNNER-STYLE-BRUXELLES-PALERME  # Spécifie d'utiliser le runner BUILD
+#  tags:
+#    - RUNNER-STYLE-BRUXELLES-PALERME  # Spécifie d'utiliser le runner BUILD
   services:
     - name: docker:dind
       alias: docker
@@ -36,8 +36,8 @@ build:
 deploy:
   stage: deploy  
   image: docker:20.10.16  # Version avec Docker CLI
-  tags:
-    - RUNNER-STYLE-BRUXELLES-PALERME  # Spécifie d'utiliser le runner DEPLOY
+#  tags:
+#    - RUNNER-STYLE-BRUXELLES-PALERME  # Spécifie d'utiliser le runner DEPLOY
   variables:
     DOCKER_HOST: "unix:///var/run/docker.sock"  # ⚠️ Utilise Docker de l’hôte
   before_script:
