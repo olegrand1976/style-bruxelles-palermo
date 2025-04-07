@@ -48,6 +48,9 @@ deploy:
     - until docker info >/dev/null 2>&1; do echo "⏳ Docker DIND n'est pas encore prêt..."; sleep 3; done
     - echo "✅ Docker DIND prêt."
   script:
+    - echo "🔑 Connexion à Docker Hub..."
+    # Assurez-vous d'avoir défini DOCKERHUB_USERNAME et DOCKERHUB_PASSWORD dans vos variables GitLab
+    - docker login -u "$DOCKERHUB_USERNAME" -p "$DOCKERHUB_PASSWORD"
     - echo "📥 Téléchargement de la dernière image..."
     - docker pull docker.io/$DOCKERHUB_USERNAME/$DOCKER_IMAGE_NAME:latest
     - docker stop nuxt-container || true
@@ -56,4 +59,3 @@ deploy:
     - echo "✅ Déploiement terminé !"
   only:
     - main
-
