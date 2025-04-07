@@ -56,7 +56,7 @@ deploy:
     - until docker info >/dev/null 2>&1; do echo "⏳ Docker DIND n'est pas encore prêt..."; sleep 3; done
     - echo "✅ Docker DIND prêt."
     # Clean docker environment
-    - echo "🧹 Nettoyage de l'environnement Docker...
+    - echo "🧹 Nettoyage de l'environnement Docker..."
     - docker system prune -af
     - docker volume prune -f
     - docker network prune -f
