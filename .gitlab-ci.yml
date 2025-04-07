@@ -22,6 +22,14 @@ build:
     - echo "⏳ Attente du démarrage de Docker DIND..."
     - until docker info >/dev/null 2>&1; do echo "⏳ Docker DIND n'est pas encore prêt..."; sleep 3; done
     - echo "✅ Docker DIND est prêt."
+    # Clean docker environment
+    - echo "🧹 Nettoyage de l'environnement Docker..."
+    - docker system prune -af
+    - docker volume prune -f
+    - docker network prune -f
+    - docker rmi $(docker images -q) || true
+    - docker rm $(docker ps -aq) || true
+    - echo "✅ Environnement Docker nettoyé."
   script:
     - echo "🐳 Construction et push de l’image Docker..."
     - docker build -t docker.io/$DOCKERHUB_USERNAME/$DOCKER_IMAGE_NAME:latest -f Dockerfile.prod .
@@ -47,6 +55,14 @@ deploy:
     - echo "⏳ Attente de Docker DIND..."
     - until docker info >/dev/null 2>&1; do echo "⏳ Docker DIND n'est pas encore prêt..."; sleep 3; done
     - echo "✅ Docker DIND prêt."
+    # Clean docker environment
+    - echo "🧹 Nettoyage de l'environnement Docker...
+    - docker system prune -af
+    - docker volume prune -f
+    - docker network prune -f
+    - docker rmi $(docker images -q) || true
+    - docker rm $(docker ps -aq) || true
+    - echo "✅ Environnement Docker nettoyé."
   script:
     - echo "🔑 Connexion à Docker Hub..."
     # Assurez-vous d'avoir défini DOCKERHUB_USERNAME et DOCKERHUB_PASSWORD dans vos variables GitLab
