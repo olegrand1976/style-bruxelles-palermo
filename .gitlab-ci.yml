@@ -8,8 +8,6 @@ stages:
 build:
   stage: build
   image: docker:20.10.16  # Image avec Docker CLI
-#  tags:
-#    - RUNNER-STYLE-BRUXELLES-PALERME  # Spécifie d'utiliser le runner BUILD
   services:
     - name: docker:dind
       alias: docker
@@ -31,10 +29,14 @@ build:
     - docker rm $(docker ps -aq) || true
     - echo "✅ Environnement Docker nettoyé."
   script:
-    - echo "🐳 Construction et push de l’image Docker..."
-    - docker build -t docker.io/$DOCKERHUB_USERNAME/$DOCKER_IMAGE_NAME:latest -f Dockerfile.prod .
+    - echo "🐳 Construction de l’image Docker..."
+    # Utilisation d'un tag unique basé sur l'ID court du commit
+    - IMAGE_TAG=${CI_COMMIT_SHORT_SHA}
+    - docker build -t docker.io/$DOCKERHUB_USERNAME/$DOCKER_IMAGE_NAME:$IMAGE_TAG -f Dockerfile.prod .
+    - echo "🔑 Connexion à Docker Hub..."
     - docker login -u "$DOCKERHUB_USERNAME" -p "$DOCKERHUB_PASSWORD"
-    - docker push docker.io/$DOCKERHUB_USERNAME/$DOCKER_IMAGE_NAME:latest
+    - echo "📥 Push de l’image Docker..."
+    - docker push docker.io/$DOCKERHUB_USERNAME/$DOCKER_IMAGE_NAME:$IMAGE_TAG
   only:
     - main
 
@@ -65,13 +67,14 @@ deploy:
     - echo "✅ Environnement Docker nettoyé."
   script:
     - echo "🔑 Connexion à Docker Hub..."
-    # Assurez-vous d'avoir défini DOCKERHUB_USERNAME et DOCKERHUB_PASSWORD dans vos variables GitLab
     - docker login -u "$DOCKERHUB_USERNAME" -p "$DOCKERHUB_PASSWORD"
     - echo "📥 Téléchargement de la dernière image..."
-    - docker pull docker.io/$DOCKERHUB_USERNAME/$DOCKER_IMAGE_NAME:latest
+    # Récupération de l'image avec le tag unique
+    - IMAGE_TAG=${CI_COMMIT_SHORT_SHA}
+    - docker pull docker.io/$DOCKERHUB_USERNAME/$DOCKER_IMAGE_NAME:$IMAGE_TAG
     - docker stop nuxt-container || true
     - docker rm nuxt-container || true
-    - docker run -d --restart=always -p 3000:3000 --name nuxt-container docker.io/$DOCKERHUB_USERNAME/$DOCKER_IMAGE_NAME:latest
+    - docker run -d --restart=always -p 3000:3000 --name nuxt-container docker.io/$DOCKERHUB_USERNAME/$DOCKER_IMAGE_NAME:$IMAGE_TAG
     - echo "✅ Déploiement terminé !"
   only:
     - main
