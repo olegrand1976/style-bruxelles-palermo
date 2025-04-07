@@ -34,22 +34,26 @@ build:
 # 🚀 Étape 2 : Déploiement sur le serveur
 #####################################
 deploy:
-  stage: deploy  
-  image: docker:20.10.16  # Version avec Docker CLI
-#  tags:
-#    - RUNNER-STYLE-BRUXELLES-PALERME  # Spécifie d'utiliser le runner DEPLOY
+  stage: deploy
+  image: docker:20.10.16
+  services:
+    - name: docker:dind
+      alias: docker
+      command: ["--tls=false"]
   variables:
-    DOCKER_HOST: "unix:///var/run/docker.sock"  # ⚠️ Utilise Docker de l’hôte
+    DOCKER_HOST: "tcp://docker:2375"
+    DOCKER_TLS_CERTDIR: ""
   before_script:
-    - echo "🛠 Déploiement local sur le serveur..."
+    - echo "⏳ Attente de Docker DIND..."
+    - until docker info >/dev/null 2>&1; do echo "⏳ Docker DIND n'est pas encore prêt..."; sleep 3; done
+    - echo "✅ Docker DIND prêt."
   script:
     - echo "📥 Téléchargement de la dernière image..."
     - docker pull docker.io/$DOCKERHUB_USERNAME/$DOCKER_IMAGE_NAME:latest
-    - echo "🛑 Arrêt et suppression du conteneur existant..."
     - docker stop nuxt-container || true
     - docker rm nuxt-container || true
-    - echo "🚀 Lancement du nouveau conteneur..."
     - docker run -d --restart=always -p 3000:3000 --name nuxt-container docker.io/$DOCKERHUB_USERNAME/$DOCKER_IMAGE_NAME:latest
     - echo "✅ Déploiement terminé !"
   only:
     - main
+
