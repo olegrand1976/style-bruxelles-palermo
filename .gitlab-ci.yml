@@ -7,7 +7,7 @@ stages:
 #####################################
 build:
   stage: build
-  image: docker:20.10.16  # Image avec Docker CLI
+  image: docker:20.10.16
   services:
     - name: docker:dind
       alias: docker
@@ -15,31 +15,18 @@ build:
   variables:
     DOCKER_HOST: "tcp://docker:2375"
     DOCKER_TLS_CERTDIR: ""
-    DOCKER_DRIVER: "overlay2"
-  before_script:
-    - echo "⏳ Attente du démarrage de Docker DIND..."
-    - until docker info >/dev/null 2>&1; do echo "⏳ Docker DIND n'est pas encore prêt..."; sleep 3; done
-    - echo "✅ Docker DIND est prêt."
-    - echo "🧹 Nettoyage de l'environnement Docker..."
-    - docker system prune -af || true
-    - docker volume prune -f || true
-    - docker network prune -f || true
-    - docker rm $(docker ps -aq) || true
-    - docker rmi $(docker images -q) || true
-    - echo "✅ Environnement Docker nettoyé."
-
   script:
-    - echo "🔎 Vérification du code présent dans le runner..."
+    - echo "Checking the code in the runner..."
     - ls -la
-    - echo "Commit actuel (Git) : $(git rev-parse HEAD)"
+    - echo "Current commit (Git): $(git rev-parse HEAD)"
     - export IMAGE_TAG=${CI_COMMIT_SHORT_SHA}
-    - echo "🐳 Construction de l’image Docker avec le tag : $IMAGE_TAG"
+    - echo "Building Docker image with tag: $IMAGE_TAG"
     - docker build -t docker.io/$DOCKERHUB_USERNAME/$DOCKER_IMAGE_NAME:$IMAGE_TAG -f Dockerfile.prod .
-    - echo "🔑 Connexion à Docker Hub..."
+    - echo "Logging in to Docker Hub..."
     - docker login -u "$DOCKERHUB_USERNAME" -p "$DOCKERHUB_PASSWORD"
-    - echo "📤 Push de l’image Docker..."
+    - echo "Pushing Docker image..."
     - docker push docker.io/$DOCKERHUB_USERNAME/$DOCKER_IMAGE_NAME:$IMAGE_TAG
-    - echo "✅ Build & Push terminé."
+    - echo "Build & Push complete."
 
   only:
     - main
@@ -73,7 +60,7 @@ deploy:
     - echo "🔑 Connexion à Docker Hub..."
     - docker login -u "$DOCKERHUB_USERNAME" -p "$DOCKERHUB_PASSWORD"
     - export IMAGE_TAG=${CI_COMMIT_SHORT_SHA}
-    - echo "📥 Téléchargement de l'image Docker avec le tag : $IMAGE_TAG"
+    - echo "Pulling Docker image with tag: $IMAGE_TAG"
     - docker pull docker.io/$DOCKERHUB_USERNAME/$DOCKER_IMAGE_NAME:$IMAGE_TAG
     - echo "🚀 Arrêt et suppression de tout conteneur précédent..."
     - docker stop nuxt-container || true
