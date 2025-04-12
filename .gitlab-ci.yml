@@ -18,9 +18,11 @@ build:
   script:
     - echo "Checking the code in the runner..."
     - ls -la
-    - echo "Current commit (Git): $(git rev-parse HEAD)"
+    - echo "Current commit (Git):"
+    - echo $(git rev-parse HEAD)
     - export IMAGE_TAG=${CI_COMMIT_SHORT_SHA}
-    - echo "Building Docker image with tag: $IMAGE_TAG"
+    - echo "Building Docker image with tag:"
+    - echo $IMAGE_TAG
     - docker build -t docker.io/$DOCKERHUB_USERNAME/$DOCKER_IMAGE_NAME:$IMAGE_TAG -f Dockerfile.prod .
     - echo "Logging in to Docker Hub..."
     - docker login -u "$DOCKERHUB_USERNAME" -p "$DOCKERHUB_PASSWORD"
