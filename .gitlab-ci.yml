@@ -60,7 +60,8 @@ deploy:
     - echo "🔑 Connexion à Docker Hub..."
     - docker login -u "$DOCKERHUB_USERNAME" -p "$DOCKERHUB_PASSWORD"
     - export IMAGE_TAG=${CI_COMMIT_SHORT_SHA}
-    - echo "Pulling Docker image with tag: $IMAGE_TAG"
+    - echo "Pulling Docker image with tag:"
+    - echo ${IMAGE_TAG}
     - docker pull docker.io/$DOCKERHUB_USERNAME/$DOCKER_IMAGE_NAME:$IMAGE_TAG
     - echo "🚀 Arrêt et suppression de tout conteneur précédent..."
     - docker stop nuxt-container || true
