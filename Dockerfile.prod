@@ -10,7 +10,7 @@ COPY package*.json ./
 
 # 2) Installer toutes les dépendances telles que définies dans package-lock.json
 #    => npm ci est plus sûr que npm install (il respecte le lock)
-RUN npm ci --loglevel silly
+RUN npm ci
 
 # 3) Copier le reste du code source
 COPY . .
