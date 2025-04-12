@@ -18,28 +18,19 @@ build:
   script:
     - echo "Checking the code in the runner..."
     - ls -la
-
     - echo "Current commit (Git):"
-    - echo "$(git rev-parse HEAD)"
-
+    - echo $(git rev-parse HEAD)
     - export IMAGE_TAG=${CI_COMMIT_SHORT_SHA}
-    - echo "Building Docker image with tags:"
-    - echo "$IMAGE_TAG and latest"
-
-    # Construction de l'image avec deux tags en une seule passe
+    - echo "Building Docker image with tag:"
+    - echo $IMAGE_TAG
     - docker build -t docker.io/$DOCKERHUB_USERNAME/$DOCKER_IMAGE_NAME:$IMAGE_TAG \
                    -t docker.io/$DOCKERHUB_USERNAME/$DOCKER_IMAGE_NAME:latest \
                    -f Dockerfile.prod .
-
     - echo "Logging in to Docker Hub..."
     - docker login -u "$DOCKERHUB_USERNAME" -p "$DOCKERHUB_PASSWORD"
-
     - echo "Pushing Docker image..."
-    # Push du tag court (commit)
     - docker push docker.io/$DOCKERHUB_USERNAME/$DOCKER_IMAGE_NAME:$IMAGE_TAG
-    # Push du tag latest
     - docker push docker.io/$DOCKERHUB_USERNAME/$DOCKER_IMAGE_NAME:latest
-
     - echo "Build & Push complete."
 
   only:
@@ -73,21 +64,15 @@ deploy:
   script:
     - echo "🔑 Connexion à Docker Hub..."
     - docker login -u "$DOCKERHUB_USERNAME" -p "$DOCKERHUB_PASSWORD"
-
-    # Si on souhaite déployer la "latest" :
-    - echo "Pulling Docker image 'latest' tag..."
-    - docker pull docker.io/$DOCKERHUB_USERNAME/$DOCKER_IMAGE_NAME:latest
-
-    # Arrêt et suppression du conteneur existant
+    - export IMAGE_TAG=${CI_COMMIT_SHORT_SHA}
+    - echo "Pulling Docker image with tag:"
+    - echo ${IMAGE_TAG}
+    - docker pull docker.io/$DOCKERHUB_USERNAME/$DOCKER_IMAGE_NAME:$IMAGE_TAG
     - echo "🚀 Arrêt et suppression de tout conteneur précédent..."
     - docker stop nuxt-container || true
     - docker rm nuxt-container || true
-
-    # Démarrage du nouveau conteneur sur le tag 'latest'
     - echo "🔌 Démarrage du nouveau conteneur..."
-    - docker run -d --restart=always -p 3000:3000 --name nuxt-container \
-        docker.io/$DOCKERHUB_USERNAME/$DOCKER_IMAGE_NAME:latest
-
+    - docker run -d --restart=always -p 3000:3000 --name nuxt-container docker.io/$DOCKERHUB_USERNAME/$DOCKER_IMAGE_NAME:$IMAGE_TAG
     - echo "✅ Déploiement terminé !"
 
   only:
