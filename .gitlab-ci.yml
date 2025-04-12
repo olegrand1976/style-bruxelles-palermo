@@ -20,8 +20,6 @@ build:
     - echo "⏳ Attente du démarrage de Docker DIND..."
     - until docker info >/dev/null 2>&1; do echo "⏳ Docker DIND n'est pas encore prêt..."; sleep 3; done
     - echo "✅ Docker DIND est prêt."
-
-    # (Optionnel) Nettoyage Docker pour éviter l'accumulation
     - echo "🧹 Nettoyage de l'environnement Docker..."
     - docker system prune -af || true
     - docker volume prune -f || true
@@ -31,26 +29,18 @@ build:
     - echo "✅ Environnement Docker nettoyé."
 
   script:
-    # Vérification du code présent
     - echo "🔎 Vérification du code présent dans le runner..."
     - ls -la
     - echo "Commit actuel (Git) : $(git rev-parse HEAD)"
-
-    # Construction de l'image avec un tag unique
-    - IMAGE_TAG=${CI_COMMIT_SHORT_SHA}
+    - export IMAGE_TAG=${CI_COMMIT_SHORT_SHA}
     - echo "🐳 Construction de l’image Docker avec le tag : $IMAGE_TAG"
     - docker build -t docker.io/$DOCKERHUB_USERNAME/$DOCKER_IMAGE_NAME:$IMAGE_TAG -f Dockerfile.prod .
-    
-    # Connexion Docker Hub
     - echo "🔑 Connexion à Docker Hub..."
     - docker login -u "$DOCKERHUB_USERNAME" -p "$DOCKERHUB_PASSWORD"
-    
-    # Push de l'image
     - echo "📤 Push de l’image Docker..."
     - docker push docker.io/$DOCKERHUB_USERNAME/$DOCKER_IMAGE_NAME:$IMAGE_TAG
     - echo "✅ Build & Push terminé."
 
-  # On ne lance cette étape que si on est sur la branche main
   only:
     - main
 
@@ -71,8 +61,6 @@ deploy:
     - echo "⏳ Attente de Docker DIND..."
     - until docker info >/dev/null 2>&1; do echo "⏳ Docker DIND n'est pas encore prêt..."; sleep 3; done
     - echo "✅ Docker DIND prêt."
-    
-    # (Optionnel) Nettoyage Docker
     - echo "🧹 Nettoyage de l'environnement Docker..."
     - docker system prune -af || true
     - docker volume prune -f || true
@@ -84,22 +72,14 @@ deploy:
   script:
     - echo "🔑 Connexion à Docker Hub..."
     - docker login -u "$DOCKERHUB_USERNAME" -p "$DOCKERHUB_PASSWORD"
-    
-    # Récupération du tag
-    - IMAGE_TAG=${CI_COMMIT_SHORT_SHA}
+    - export IMAGE_TAG=${CI_COMMIT_SHORT_SHA}
     - echo "📥 Téléchargement de l'image Docker avec le tag : $IMAGE_TAG"
     - docker pull docker.io/$DOCKERHUB_USERNAME/$DOCKER_IMAGE_NAME:$IMAGE_TAG
-    
-    # Arrêt et suppression du conteneur existant
     - echo "🚀 Arrêt et suppression de tout conteneur précédent..."
     - docker stop nuxt-container || true
     - docker rm nuxt-container || true
-    
-    # Démarrage du nouveau conteneur
     - echo "🔌 Démarrage du nouveau conteneur..."
-    - docker run -d --restart=always -p 3000:3000 --name nuxt-container \
-        docker.io/$DOCKERHUB_USERNAME/$DOCKER_IMAGE_NAME:$IMAGE_TAG
-    
+    - docker run -d --restart=always -p 3000:3000 --name nuxt-container docker.io/$DOCKERHUB_USERNAME/$DOCKER_IMAGE_NAME:$IMAGE_TAG
     - echo "✅ Déploiement terminé !"
 
   only:
