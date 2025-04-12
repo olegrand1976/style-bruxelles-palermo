@@ -1,48 +1,44 @@
+#####################################
 # Étape 1 : Build stage
+#####################################
 FROM node:20-alpine AS builder
+
 WORKDIR /app
 
-# Copier uniquement les fichiers essentiels
-COPY package.json package-lock.json* ./
+# 1) Copier les fichiers de dépendances
+COPY package*.json ./
 
-# Installation des dépendances (inclure TypeScript explicitement)
-RUN npm install --legacy-peer-deps typescript
+# 2) Installer toutes les dépendances telles que définies dans package-lock.json
+#    => npm ci est plus sûr que npm install (il respecte le lock)
+RUN npm ci
 
-# Vérifier si Nuxt Kit et TypeScript sont bien installés
-RUN npm list @nuxt/kit || npm install @nuxt/kit --legacy-peer-deps
-RUN npm list typescript || npm install typescript --legacy-peer-deps
-
-# Copier le reste du projet et builder l'application
+# 3) Copier le reste du code source
 COPY . .
+
+# 4) Lancer la commande de build Nuxt
 RUN npm run build
 
-# Étape 2 : Runtime stage (exécution en production)
+
+#####################################
+# Étape 2 : Runtime stage
+#####################################
 FROM node:20-alpine
 
 WORKDIR /app
 
-# Copier uniquement les fichiers essentiels pour l'exécution
-COPY --from=builder /app/package.json /app/package-lock.json ./
+# 1) Copier uniquement ce qui est nécessaire en production
+COPY --from=builder /app/package*.json ./
 COPY --from=builder /app/.output ./.output
 
-# Installation des dépendances runtime uniquement (sans devDependencies)
-RUN npm install --production --legacy-peer-deps
+# 2) Installer seulement les dépendances "prod"
+RUN npm ci --production
 
-# Vérifier si Nuxt Kit et TypeScript sont bien installés
-RUN npm list @nuxt/kit || npm install @nuxt/kit --legacy-peer-deps
-RUN npm list typescript || npm install typescript --legacy-peer-deps
+# (Optionnel) Exécuter l'application en tant qu'utilisateur non-root
+# RUN addgroup -S appgroup && adduser -S appuser -G appgroup
+# USER appuser
 
-# Ajouter un utilisateur et un groupe non-root
-RUN addgroup -S appgroup && adduser -S appuser -G appgroup
-
-# Changer les permissions du dossier de travail
-RUN chown -R appuser:appgroup /app
-
-# Définir l'utilisateur non-root pour exécuter l'application
-USER appuser
-
-# Exposer le port 3000
+# 3) Exposer le port 3000 (Nuxt par défaut)
 EXPOSE 3000
 
-# Démarrer l’application en mode production avec gestion des modules ES
-CMD ["node", "--experimental-specifier-resolution=node", ".output/server/index.mjs"]
+# 4) Démarrer l’application (Nuxt 3.x)
+CMD ["node", ".output/server/index.mjs"]
