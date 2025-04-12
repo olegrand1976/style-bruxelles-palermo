@@ -44,7 +44,7 @@ deploy:
     - apk add --no-cache openssh-client
     - echo "$SSH_PRIVATE_KEY" | tr -d '\r' > key.pem
     - chmod 600 key.pem
-    - ssh -o StrictHostKeyChecking=no -i key.pem rocky@style-bruxelle-palermo "
+    - ssh -o StrictHostKeyChecking=no -i key.pem rocky@141.94.106.145 "
         docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD &&
         docker pull docker.io/$DOCKERHUB_USERNAME/$DOCKER_IMAGE_NAME:latest &&
         docker stop nuxt-container || true &&
