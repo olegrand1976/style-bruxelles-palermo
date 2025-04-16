@@ -24,7 +24,7 @@
     </nav>
 
     <!--mobile navbar-->
-    <div v-if="isMenuOpen" class="xl:hidden bg-white w-5/6 h-auto transition-all duration-300 overflow-hidden z-20 absolute right-0 shadow-xl">
+    <div v-if="isMenuOpen" class="xl:hidden bg-white w-5/6 h-full transition-all duration-300 overflow-auto z-20 fixed right-0 shadow-xl">
       <div class="px-8">
         <div @click="toggleMenu" class="pt-2">
           <img src="/images/close.svg" alt="close">
