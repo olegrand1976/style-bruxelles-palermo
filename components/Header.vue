@@ -33,9 +33,9 @@
           <img src="/images/logo-nav.svg" alt="Stylé" class="w-24">
         </div>
         <nav class="text-base">
-          <NuxtLink :to="localePath('/')" class="block py-4 font-bold">{{ $t('accueil.title') }}</NuxtLink>
-          <NuxtLink :to="localePath('/services')" class="block py-4">{{ $t('services.title')}}</NuxtLink>
-          <NuxtLink :to="localePath('/contact')" class="block py-4">{{ $t('contact.title')}}</NuxtLink>
+          <NuxtLink :to="localePath('/')" class="block py-4 font-bold" @click="toggleMenu">{{ $t('accueil.title') }}</NuxtLink>
+          <NuxtLink :to="localePath('/services')" class="block py-4" @click="toggleMenu">{{ $t('services.title')}}</NuxtLink>
+          <NuxtLink :to="localePath('/contact')" class="block py-4" @click="toggleMenu">{{ $t('contact.title')}}</NuxtLink>
         </nav>
       </div>
       <div class="w-4/5 ml-auto h-4 bg-[#E09550] rounded-l-lg !px-0"></div>
