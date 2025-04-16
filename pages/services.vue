@@ -37,8 +37,8 @@
         <p class="py-4">{{ $t('services.section3.description1.part1') }} <br> {{ $t('services.section3.description1.part2') }} <br> {{ $t('services.section3.description1.part3') }} <br> {{ $t('services.section3.description1.part4') }} </p>
         <p>{{ $t('services.section3.description2.part1') }} <br> {{ $t('services.section3.description2.part2') }} <br> {{ $t('services.section3.description2.part3') }}</p>
         <div class="py-8 flex sm:flex-col xl:flex-row gap-8 items-center">
-          <button class="w-64 border border-[#E09550] py-3 text-[#E09550] rounded-full shadow-md hover:bg-[#E09550] hover:text-white transition easy 5s">C{{ $t('buttons.contact')}}</button>
-          <button onclick="window.open('https://client.optios.net/online_booking.html?/7827', '_blank', 'noopener')" class="w-64 border py-3 bg-[#E09550] text-white rounded-full shadow-md hover:bg-white hover:text-[#E09550] transition ease-in-out duration-500">R{{ $t('buttons.rendezvous')}}</button>
+          <button class="w-64 border border-[#E09550] py-3 text-[#E09550] rounded-full shadow-md hover:bg-[#E09550] hover:text-white transition easy 5s">{{ $t('buttons.contact')}}</button>
+          <button onclick="window.open('https://client.optios.net/online_booking.html?/7827', '_blank', 'noopener')" class="w-64 border py-3 bg-[#E09550] text-white rounded-full shadow-md hover:bg-white hover:text-[#E09550] transition ease-in-out duration-500">{{ $t('buttons.rendezvous')}}</button>
         </div>
       </div>
     </div>
