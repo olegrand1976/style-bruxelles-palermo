@@ -10,8 +10,8 @@
             <img src="/images/biosthetique.svg" alt="la biosthetique" class="object-cover w-full">
         </div>
         <div class="sm:w-full xl:w-1/2 sm:space-y-5 xl:space-y-10 sm:px-0 xl:px-20">
-            <h2 class="text-[#E09550] text-4xl font-bold sm:text-center xl:text-start">{{ $t('biosthetique.section1.title') }}</h2>
-            <h3 class="text-2xl font-bold sm:text-center xl:text-start">{{ $t('biosthetique.section1.subtitle') }}</h3>
+            <h2 class="text-[#E09550] sm:text-xl xl:text-4xl font-bold sm:text-center xl:text-start">{{ $t('biosthetique.section1.title') }}</h2>
+            <h3 class="sm:text-lg xl:text-2xl font-bold sm:text-center xl:text-start">{{ $t('biosthetique.section1.subtitle') }}</h3>
             <p>{{ $t('biosthetique.section1.description') }}</p>
         </div>
     </div>
@@ -22,8 +22,8 @@
 
     <div class="my-10 sm:px-10 xl:px-20 flex sm:flex-col-reverse xl:flex-row justify-between items-center mb-40">
         <div class="sm:w-full xl:w-1/2 sm:space-y-5 xl:space-y-10 sm:px-0 xl:px-20">
-            <h2 class="text-[#E09550] text-4xl font-bold sm:text-center xl:text-start">{{ $t('biosthetique.section2.title') }}</h2>
-            <h3 class="text-2xl font-bold sm:text-center xl:text-start">{{ $t('biosthetique.section2.subtitle') }}</h3>
+            <h2 class="text-[#E09550] sm:text-xl xl:text-4xl font-bold sm:text-center xl:text-start">{{ $t('biosthetique.section2.title') }}</h2>
+            <h3 class="sm:text-lg xl:text-2xl font-bold sm:text-center xl:text-start">{{ $t('biosthetique.section2.subtitle') }}</h3>
             <p class="py-4">{{ $t('biosthetique.section2.description1.part1') }}<br>{{ $t('biosthetique.section2.description1.part2') }}<br> {{ $t('biosthetique.section2.description1.part3') }}</p>
             <p>{{ $t('biosthetique.section2.description2.part1') }} <br> {{ $t('biosthetique.section2.description2.part2') }} <br> {{ $t('biosthetique.section2.description2.part3') }}</p>
             <div class="flex sm:flex-col xl:flex-row gap-8 items-center">
@@ -32,7 +32,7 @@
             </div>
         </div>
         <div class="sm:w-full xl:w-1/2 mb-8">
-            <img src="/images/img_biosthetique.svg" alt="img_coiffure" class="w-full" style="border-top-left-radius:200px">
+            <img src="/images/img_biosthetique.svg" alt="img_coiffure" class="w-full sm:rounded-tl-[50px] xl:rounded-tl-[200px]">
         </div>
     </div>
 
