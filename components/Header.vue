@@ -1,8 +1,8 @@
 <template>
   <header>
-    <nav class="flex justify-between items-center bg-white sm:px-10 xl:px-20 py-3 fixed w-full top-0 z-10 shadow-xl">
+    <nav class="flex justify-between items-center bg-white sm:px-5 xl:px-20 py-3 fixed w-full top-0 z-10 shadow-xl">
       <img src="/images/logo-nav.svg" alt="Stylé">
-      <div class="flex items-center gap-20">
+      <div class="flex items-center sm:gap-8 xl:gap-20">
         <ul class="hidden sm:hidden xl:flex list-none gap-8 items-center m-0 p-0">
           <li><NuxtLink :to="localePath('/')" class="nav-link">{{ $t('accueil.title') }}</NuxtLink></li>
           <li><NuxtLink :to="localePath('/services')" class="nav-link">{{ $t('services.title')}}</NuxtLink></li>
