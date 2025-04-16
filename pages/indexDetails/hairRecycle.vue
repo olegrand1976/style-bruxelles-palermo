@@ -6,7 +6,7 @@
     <div class="w-4/5 h-4 bg-[#E09550] rounded-r-lg"></div>
 
     <div class="sm:my-10 xl:my-20 sm:px-10 xl:px-20 flex sm:flex-col xl:flex-row justify-between items-center">
-        <div class="border-2 border-[#E09550] sm:w-full xl:w-1/2 sm:h-[300px] xl:h-[600px] flex justify-center items-center">
+        <div class="m:w-full xl:w-1/2 flex justify-center items-center">
             <img src="/images/hair_recycle.svg" alt="hair_recycle">
         </div>
         <div class="sm:w-full xl:w-1/2 sm:space-y-5 xl:space-y-10 sm:px-0 xl:px-20 mt-10">

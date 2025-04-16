@@ -71,7 +71,7 @@
   </section>
 
   <section class="sm:my-10 xl:my-20 sm:px-7 xl:px-20 flex sm:flex-col xl:flex-row justify-between items-center">
-    <div class="border-2 border-[#E09550] sm:w-full xl:w-1/2 sm:h-[300px] xl:h-[600px] flex justify-center items-center mb-4">
+    <div class="sm:w-full xl:w-1/2 flex justify-center items-center mb-4">
       <img src="/images/hair_recycle.svg" alt="hair_recycle">
     </div>
     <div class="sm:w-full xl:w-1/2 sm:space-y-4 xl:space-y-10 sm:px-0 xl:px-20 sm:text-center xl:text-start">
@@ -107,7 +107,7 @@
       </div>
     </div>
     <div class="sm:w-full xl:w-1/2 sm:mt-10 xl:mt-auto">
-      <img :src="selectedImage" alt="img_coiffure" class="w-full h-auto" style="border-top-right-radius:200px">
+      <img :src="selectedImage" alt="img_coiffure" class="w-full h-auto sm:rounded-tr-[50px] xl:rounded-tr-[200px]">
     </div>
   </section>
 
