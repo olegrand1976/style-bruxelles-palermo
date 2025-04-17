@@ -22,21 +22,9 @@
       </div>
     </div>
     <div class="sm:flex sm:flex-col xl:grid grid-cols-3 gap-10 sm:my-10 xl:my-20">
-      <div class="relative">
-        <img src="/images/img1_accueil.svg" alt="image1" class="w-full object-cover rounded-t-3xl">
-        <p class=" text-center text-6xl font-bold py-16 text-white  bg-gradient-to-b from-black/100 to-transparent absolute top-0 w-full rounded-t-3xl">{{ $t('accueil.section2.image1.text1') }}</p>
-        <p class=" text-center sm:text-3xl xl:text-4xl font-bold py-5 text-white bg-orange-500/30 absolute bottom-10 w-full">{{ $t('accueil.section2.image1.text2') }}</p>
-      </div>
-      <div class="relative">
-        <img src="/images/img2_accueil.svg" alt="image2" class="w-full object-cover rounded-t-3xl">
-        <p class=" text-center text-6xl font-bold py-16 text-white  bg-gradient-to-b from-black/100 to-transparent absolute top-0 w-full rounded-t-3xl">{{ $t('accueil.section2.image2.text1') }}</p>
-        <p class=" text-center sm:text-3xl xl:text-4xl font-bold py-5 text-white bg-orange-500/30 absolute bottom-10 w-full">{{ $t('accueil.section2.image2.text2') }}</p>
-      </div>
-      <div class="relative">
-        <img src="/images/img3_accueil.svg" alt="image3" class="w-full object-cover rounded-t-3xl">
-        <p class=" text-center text-6xl font-bold py-16 text-white  bg-gradient-to-b from-black/100 to-transparent absolute top-0 w-full rounded-t-3xl">{{ $t('accueil.section2.image3.text1') }}</p>
-        <p class=" text-center sm:text-3xl xl:text-4xl font-bold py-5 text-white bg-orange-500/30 absolute bottom-10 w-full">{{ $t('accueil.section2.image3.text2') }}</p>
-      </div>
+      <img src="/images/img1_accueil.svg" alt="image1" class="w-full object-cover rounded-t-3xl">
+      <img src="/images/img2_accueil.svg" alt="image2" class="w-full object-cover rounded-t-3xl">
+      <img src="/images/img3_accueil.svg" alt="image3" class="w-full object-cover rounded-t-3xl">
     </div>
     <div class="text-center sm:text-2xl xl:text-5xl font-bold"> {{ $t('accueil.section2.part1') }} <br> {{ $t('accueil.section2.part2') }}  <br>{{ $t('accueil.section2.part3') }}
     </div>
@@ -44,7 +32,7 @@
 
   <section class="relative sm:py-10 xl:py-20 flex flex-col">
     <img src="/images/img_biosthetique.svg" alt="biosthetique" class="w-full h-auto">
-    <img src="/images/logo-coiffure.svg" alt="logo" class="absolute sm:top-1/3 xl:top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 sm:w-[250px] xl:w-[500px]">
+    <img src="/images/logo-coiffure.svg" alt="logo" class="absolute sm:top-1/4 xl:top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 sm:w-[150px] xl:w-[500px]">
 
     <div class="w-full flex sm:flex-col-reverse xl:flex-row items-center sm:gap-4 xl:gap-16 bg-[#E09550] sm:relative xl:absolute sm:bottom-0 xl:bottom-40">
       <img src="/images/cheveux.svg" alt="cheveux" class="sm:w-full xl:w-auto sm:mt-0 xl:mt-[-75px] z-10">
@@ -84,19 +72,46 @@
     </div>
   </section>
 
-  <section class="my-20">
+  <section class="relative my-20 px-10">
+    <div class="grid grid-cols-1 xl:grid-cols-4 gap-6">
+      <div v-for="(img, i) in visibleImages" :key="i" class="w-full flex-shrink-0">
+        <img :src="img" alt="pic-caressoule" class="w-full object-cover rounded-3xl"/>
+      </div>
+    </div>
+    <button @click="prev" class="absolute top-1/2 left-4 transform -translate-y-1/2 bg-white p-2 rounded-full shadow-md hover:bg-gray-200">◀</button>
+    <button @click="next" class="absolute top-1/2 right-4 transform -translate-y-1/2 bg-white p-2 rounded-full shadow-md hover:bg-gray-200">▶</button>
+  </section>
+
+  <section class="sm:my-10 xl:my-20">
     <img src="/images/img_bleu.svg" alt="image-bleu" class="w-full object-cover">
   </section>
 
-  <section class="my-20 px-10 grid grid-cols-4 gap-6">
-    <img src="/images/pic-caressoule-1.svg" alt="pic-caressoule" class="w-full object-cover rounded-3xl">
-    <img src="/images/pic-caressoule-2.svg" alt="pic-caressoule" class="w-full object-cover rounded-3xl">
-    <img src="/images/pic-caressoule-3.svg" alt="pic-caressoule" class="w-full object-cover rounded-3xl">
-    <img src="/images/pic-caressoule-4.svg" alt="pic-caressoule" class="w-full object-cover rounded-3xl">
+  <section class="sm:px-7 xl:px-20 sm:my-10 xl:my-20">
+    <div class="sm:pb-10 xl:pb-20 sm:text-center xl:text-start">
+      <h2 class="text-[#E09550] font-bold sm:text-xl xl:text-4xl mb-4">{{ $t('accueil.section2.title') }}</h2>
+      <span class="font-bold sm:text-lg xl:text-2xl">{{ $t('accueil.section2.subtitle') }}</span>
+    </div>
+    <div class=" sm:flex sm:flex-col xl:grid grid-cols-3 gap-10">
+      <div class="relative">
+        <img src="/images/slide3.svg" alt="image1" class="w-full sm:h-[300px] xl:h-[600px] object-cover rounded-3xl">
+        <p class=" text-center sm:text-4xl xl:text-6xl font-bold py-16 text-white absolute -top-14 w-full rounded-t-3xl z-20">{{ $t('accueil.section2.image1.text1') }}</p>
+        <img src="/images/tarifs.svg" alt="tarifs" class="absolute -top-7 left-1/2 -translate-x-1/2 z-10 sm:w-3/4 xl:w-auto">
+      </div>
+      <div class="relative">
+        <img src="/images/slide2.svg" alt="image2" class="w-full sm:h-[300px] xl:h-[600px] object-cover rounded-3xl">
+        <p class=" text-center sm:text-4xl xl:text-6xl font-bold py-16 text-white absolute -top-14 w-full rounded-t-3xl z-20">{{ $t('accueil.section2.image2.text1') }}</p>
+        <img src="/images/tarifs.svg" alt="tarifs" class="absolute -top-7 left-1/2 -translate-x-1/2 z-10 sm:w-3/4 xl:w-auto">
+      </div>
+      <div class="relative">
+        <img src="/images/slide1.svg" alt="image3" class="w-full sm:h-[300px] xl:h-[600px] object-cover rounded-3xl">
+        <p class=" text-center sm:text-4xl xl:text-6xl font-bold py-16 text-white absolute -top-14 w-full rounded-t-3xl z-20">{{ $t('accueil.section2.image3.text1') }}</p>
+        <img src="/images/tarifs.svg" alt="tarifs" class="absolute -top-7 left-1/2 -translate-x-1/2 z-10 sm:w-3/4 xl:w-auto">
+      </div>
+    </div>
   </section>
 
   <section class="my-10 sm:px-10 xl:px-20 flex sm:flex-col xl:flex-row justify-between items-center">
-    <div class="sm:w-full xl:w-1/2 space-y-10 sm:px-0 xl:px-20">
+    <div class="sm:w-full xl:w-1/2 sm:space-y-5 xl:space-y-10 sm:px-0 xl:px-20">
       <h2 class="text-[#E09550] sm:text-xl xl:text-4xl font-bold sm:text-center xl:text-start">{{ $t('accueil.section6.title') }}</h2>
         <h3 class="sm:text-xl xl:text-2xl font-bold sm:text-center xl:text-start">{{ $t('accueil.section6.subtitle') }}</h3>
         <p class="py-4">{{ $t('accueil.section6.description1.part1') }}<br>{{ $t('accueil.section6.description1.part2') }}<br> {{ $t('accueil.section6.description1.part3') }} <br> {{ $t('accueil.section6.description1.part4') }}</p>
@@ -127,21 +142,70 @@
 
 <script setup>
 
-import { ref } from 'vue';
+import { ref, onMounted, onUnmounted, computed } from 'vue';
 
-const images = [
-  '/images/img_coiffure.svg',
-  '/images/im1.svg',
-  '/images/im2.svg',
-  '/images/im3.svg'
-];
-const selectedImage = ref(images[0]);
-const selectImage = (image) => {
-  selectedImage.value = image;
-};
-const filteredImages = computed(() => {
-  return images.filter(image => image !== selectedImage.value);
-});
+  const images = [
+    '/images/img_coiffure.svg',
+    '/images/im1.svg',
+    '/images/im2.svg',
+    '/images/im3.svg'
+  ];
+  const selectedImage = ref(images[0]);
+  const selectImage = (image) => {
+    selectedImage.value = image;
+  };
+  const filteredImages = computed(() => {
+    return images.filter(image => image !== selectedImage.value);
+  });
+
+  // slider des images
+  const imagesSlider = [
+    '/images/pic-caressoule-1.svg',
+    '/images/pic-caressoule-2.svg',
+    '/images/pic-caressoule-3.svg',
+    '/images/pic-caressoule-4.svg',
+    '/images/pic-caressoule-5.svg',
+    '/images/pic-caressoule-6.svg',
+    '/images/pic-caressoule-7.svg',
+    '/images/pic-caressoule-8.svg'
+  ]
+
+  const currentIndex = ref(0);
+  const imagesPerPage = ref(4);
+
+  function updateImagesPerPage() {
+    const width = window.innerWidth
+    if (width < 640) {
+      imagesPerPage.value = 1
+    } else {
+      imagesPerPage.value = 4 
+    }
+  }
+
+  function next() {
+    if (currentIndex.value + imagesPerPage.value < imagesSlider.length) {
+      currentIndex.value++
+    }
+  }
+
+  function prev() {
+    if (currentIndex.value > 0) {
+      currentIndex.value--
+    }
+  }
+
+  const visibleImages = computed(() => {
+    return imagesSlider.slice(currentIndex.value, currentIndex.value + imagesPerPage.value)
+  })
+
+  onMounted(() => {
+    updateImagesPerPage()
+    window.addEventListener('resize', updateImagesPerPage)
+  })
+
+  onUnmounted(() => {
+    window.removeEventListener('resize', updateImagesPerPage)
+  })
 </script>
 
 <style scoped>

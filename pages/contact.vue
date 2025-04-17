@@ -2,8 +2,8 @@
   <section class="contact">
     <div class="relative">
       <img src="/images/img-style.svg" alt="image2" class="w-full sm:h-[100vh] xl:h-auto object-cover">
-      <img src="/images/logo-coiffure.svg" alt="logo" class="absolute sm:top-1/2 xl:top-40 sm:right-1/4 xl:right-0 sm:w-64 xl:w-auto">
-      <h1 class="absolute sm:top-1/3 xl:top-40 sm:left-1/4 xl:left-20 text-white sm:text-3xl xl:text-6xl font-bold">{{ $t('buttons.contact') }} ?</h1>
+      <img src="/images/logo-coiffure.svg" alt="logo" class="absolute sm:top-1/2 xl:top-40 sm:left-1/2 xl:right-0 sm:-translate-x-1/2 xl:translate-x-0 sm:w-64 xl:w-auto">
+      <h1 class="whitespace-nowrap absolute sm:top-1/3 xl:top-40 sm:left-1/2 xl:left-20 sm:-translate-x-1/2 xl:translate-x-0 text-white sm:text-3xl xl:text-6xl font-bold">{{ $t('buttons.contact') }} ?</h1>
     </div>
     <div class="sm:w-1/2 xl:w-4/5 h-4 bg-[#E09550] rounded-r-lg"></div>
     <div class="flex sm:flex-col xl:flex-row px-10 sm:my-20 xl:my-40">

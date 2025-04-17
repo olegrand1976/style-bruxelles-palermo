@@ -1,6 +1,6 @@
 <template>
   <header>
-    <nav class="flex justify-between items-center bg-white sm:px-5 xl:px-20 py-3 fixed w-full top-0 z-10 shadow-xl">
+    <nav class="flex justify-between items-center bg-white sm:px-5 xl:px-20 py-3 fixed w-full top-0 z-50 shadow-xl">
       <img src="/images/logo-nav.svg" alt="Stylé">
       <div class="flex items-center sm:gap-8 xl:gap-20">
         <ul class="hidden sm:hidden xl:flex list-none gap-8 items-center m-0 p-0">
@@ -8,7 +8,7 @@
           <li><NuxtLink :to="localePath('/services')" class="nav-link">{{ $t('services.title')}}</NuxtLink></li>
           <li><NuxtLink :to="localePath('/contact')" class="nav-link">{{ $t('contact.title')}}</NuxtLink></li>
         </ul>
-        <button class="sm:absolute xl:relative sm:top-28 xl:top-auto sm:right-1/4 xl:right-auto">
+        <button class="whitespace-nowrap sm:absolute xl:relative sm:top-28 xl:top-auto sm:left-1/2 xl:left-auto sm:-translate-x-1/2 xl:translate-x-0">
           <a href="https://client.optios.net/online_booking.html?/7827" target="_blank" rel="noopener"
             class="border px-8 py-3 bg-[#E09550] text-white rounded-full hover:bg-white hover:text-[#E09550] transition easy 5s">
             {{ $t('buttons.rendezvous') }}
@@ -24,7 +24,7 @@
     </nav>
 
     <!--mobile navbar-->
-    <div v-if="isMenuOpen" class="xl:hidden bg-white w-5/6 h-full transition-all duration-300 overflow-auto z-20 fixed right-0 shadow-xl">
+    <div v-if="isMenuOpen" class="xl:hidden bg-white w-5/6 h-full transition-all duration-300 overflow-auto z-50 fixed right-0 shadow-xl">
       <div class="px-8">
         <div @click="toggleMenu" class="pt-2">
           <img src="/images/close.svg" alt="close">
