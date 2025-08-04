@@ -14,7 +14,7 @@
                 <PriceTarifs titre="Permanentes" :items="permanentes" class="w-full"/>
             </div>
             <div class="px-4 py-6 flex sm:flex-col xl:flex-row justify-between gap-4">
-                <PriceTarifs titre="Brushing - Coupes" :items="brushing" class="w-full" />
+                <PriceTarifs titre="Brushing - Coupes" :items="brushing" class="sm:w-full xl:w-1/2" />
                 <div class="flex flex-col justify-between gap-4 sm:w-full xl:w-1/2">
                     <PriceTarifs titre="Autres services" :items="autres" class="w-full"/>
                     <PriceTarifs titre="Homme" :items="homme" class="w-full"/>

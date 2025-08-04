@@ -55,7 +55,7 @@
           <p>Inscrivez-vous à notre newsletter pour recevoir nos futures communications.</p>
           <div class="border border-gray-300 rounded-lg mt-2 flex justify-between">
             <input type="email" placeholder="Enter Your Email" class="p-2 rounded-lg w-full outline-none">
-            <button type="button" class="border border-[#E09550] py-2 px-8 rounded-lg font-bold text-white bg-[#E09550]" style="box-shadow:inset 0 2px 4px 0px rgba(0,0,0,0.3)">Subscribe</button>
+            <button type="button" class="border border-[#E09550] py-2 sm:px-4 xl:px-8 rounded-lg font-bold text-white bg-[#E09550] sm:text-sm xl:text-base" style="box-shadow:inset 0 2px 4px 0px rgba(0,0,0,0.3)">Subscribe</button>
           </div>
           <div class="flex items-center py-4 gap-4 text-2xl text-[#E09550]">
             <Icon name="uil:twitter" class="cursor-pointer" />

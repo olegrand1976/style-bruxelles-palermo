@@ -87,7 +87,7 @@
   </section>
 
   <section class="sm:px-7 xl:px-20 sm:my-10 xl:my-20">
-    <div class="sm:pb-10 xl:pb-20 flex justify-between items-center">
+    <div class="sm:pb-10 xl:pb-20 flex sm:flex-col xl:flex-row justify-between items-center">
       <div class="sm:text-center xl:text-start">
         <h2 class="text-[#E09550] font-bold sm:text-xl xl:text-4xl mb-4">{{ $t('accueil.section2.title') }}</h2>
         <span class="font-bold sm:text-lg xl:text-2xl">{{ $t('accueil.section2.subtitle') }}</span>

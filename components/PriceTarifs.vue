@@ -1,8 +1,8 @@
 <!-- components/PriceBlock.vue -->
 <script setup lang="ts">
 defineProps<{
-  titre: string
-  items: { nom: string; prix: string }[]
+  titre?: string
+  items?: { nom: string; prix: string }[]
 }>()
 </script>
 
