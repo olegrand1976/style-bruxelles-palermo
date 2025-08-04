@@ -87,25 +87,24 @@
   </section>
 
   <section class="sm:px-7 xl:px-20 sm:my-10 xl:my-20">
-    <div class="sm:pb-10 xl:pb-20 sm:text-center xl:text-start">
-      <h2 class="text-[#E09550] font-bold sm:text-xl xl:text-4xl mb-4">{{ $t('accueil.section2.title') }}</h2>
-      <span class="font-bold sm:text-lg xl:text-2xl">{{ $t('accueil.section2.subtitle') }}</span>
+    <div class="sm:pb-10 xl:pb-20 flex justify-between items-center">
+      <div class="sm:text-center xl:text-start">
+        <h2 class="text-[#E09550] font-bold sm:text-xl xl:text-4xl mb-4">{{ $t('accueil.section2.title') }}</h2>
+        <span class="font-bold sm:text-lg xl:text-2xl">{{ $t('accueil.section2.subtitle') }}</span>
+      </div>
+      <button class="border px-8 py-3 bg-[#E09550] text-white rounded-full hover:bg-white hover:text-[#E09550] transition easy 5s">
+        <NuxtLink to="/indexDetails/tarifs">Voir tous nos tarifs</NuxtLink>
+      </button>
     </div>
     <div class=" sm:flex sm:flex-col xl:grid grid-cols-3 gap-10">
       <div class="relative">
         <img src="/images/slide3.svg" alt="image1" class="w-full sm:h-[300px] xl:h-[600px] object-cover rounded-3xl">
-        <p class=" text-center sm:text-4xl xl:text-6xl font-bold py-16 text-white absolute -top-14 w-full rounded-t-3xl z-20">{{ $t('accueil.section2.image1.text1') }}</p>
-        <img src="/images/tarifs.svg" alt="tarifs" class="absolute -top-7 left-1/2 -translate-x-1/2 z-10 sm:w-3/4 xl:w-auto">
       </div>
       <div class="relative">
         <img src="/images/slide2.svg" alt="image2" class="w-full sm:h-[300px] xl:h-[600px] object-cover rounded-3xl">
-        <p class=" text-center sm:text-4xl xl:text-6xl font-bold py-16 text-white absolute -top-14 w-full rounded-t-3xl z-20">{{ $t('accueil.section2.image2.text1') }}</p>
-        <img src="/images/tarifs.svg" alt="tarifs" class="absolute -top-7 left-1/2 -translate-x-1/2 z-10 sm:w-3/4 xl:w-auto">
       </div>
       <div class="relative">
         <img src="/images/slide1.svg" alt="image3" class="w-full sm:h-[300px] xl:h-[600px] object-cover rounded-3xl">
-        <p class=" text-center sm:text-4xl xl:text-6xl font-bold py-16 text-white absolute -top-14 w-full rounded-t-3xl z-20">{{ $t('accueil.section2.image3.text1') }}</p>
-        <img src="/images/tarifs.svg" alt="tarifs" class="absolute -top-7 left-1/2 -translate-x-1/2 z-10 sm:w-3/4 xl:w-auto">
       </div>
     </div>
   </section>
