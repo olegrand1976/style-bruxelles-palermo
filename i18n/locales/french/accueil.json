@@ -21,6 +21,8 @@
       }
     },
     "section2": {
+      "title":"Nos tarifs",
+      "subtitle":"L’art de la coiffure sans frontières",
       "image1":{
         "text1":"60€",
         "text2":"Pack individuelle"
@@ -40,7 +42,7 @@
     "section3": {
       "part1": "Du lundi au vendredi de 9h à 18h",
       "part2": "Samedi",
-      "part3": "pour les mariage uniquement sur réservation"
+      "part3": "pour les mariages uniquement sur réservation"
     },
     "section4": {
       "title": "Quand la Beauté Rencontre l’Écologie :",

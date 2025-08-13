@@ -3,6 +3,7 @@
     <Header />
     <!-- Optionnel : le Carousel peut être intégré ici ou dans la page d'accueil -->
     <Carousel v-if="isHomePage" />
+    <PriceTarifs />
     <NuxtPage />
     <Footer />
   </div>
@@ -12,6 +13,7 @@
   import Header from '@/components/Header.vue'
   import Footer from '@/components/Footer.vue'
   import Carousel from '@/components/Carousel.vue'
+  import PriceTarifs from '@/components/PriceTarifs.vue'
   import { useRoute } from 'vue-router'
   import { useI18n } from 'vue-i18n'
 

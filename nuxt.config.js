@@ -37,7 +37,7 @@ export default defineNuxtConfig({
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: ['@nuxt/image', '@nuxtjs/tailwindcss', '@nuxt/icon', '@nuxtjs/i18n'],
+  modules: ['@nuxt/image', '@nuxtjs/tailwindcss','@nuxtjs/i18n','nuxt-icon'],
 
   i18n: {
     strategy: 'prefix_except_default',

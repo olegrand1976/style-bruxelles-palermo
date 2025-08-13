@@ -26,19 +26,19 @@
     "*.**": "prettier --check --ignore-unknown"
   },
   "dependencies": {
-    "@nuxt/icon": "^1.10.3",
+    "@iconify-json/uil": "^1.2.3",
     "@nuxt/image": "^1.9.0",
-    "@nuxt/kit": "^3.16.0",
     "@nuxtjs/i18n": "^9.2.1",
     "@nuxtjs/tailwindcss": "^6.13.1",
     "fs-extra": "^10.1.0",
     "nuxt": "^3.6.0",
-    "readdirp": "^3.6.0",
+    "nuxt-icon": "^1.0.0-beta.7",
     "vue": "^3.5.13"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.7.1",
     "@commitlint/config-conventional": "^19.7.1",
+    "@iconify-json/mdi": "^1.2.3",
     "@nuxt/types": "^2.15.8",
     "@types/node": "^22.13.5",
     "@vue/test-utils": "^2.4.6",
