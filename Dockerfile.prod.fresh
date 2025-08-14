@@ -1,0 +1,44 @@
+#####################################
+# Étape 1 : Build stage
+#####################################
+FROM node:20-slim AS builder
+
+WORKDIR /app
+
+# 1) Copier seulement package.json (sans lock file)
+COPY package.json ./
+
+# 2) Nettoyer et installer les dépendances (génère un nouveau lock file)
+RUN npm cache clean --force && \
+    npm install
+
+# 3) Copier le reste du code source
+COPY . .
+
+# 4) Lancer la commande de build Nuxt
+RUN npm run build
+
+
+#####################################
+# Étape 2 : Runtime stage
+#####################################
+FROM node:20-slim
+
+WORKDIR /app
+
+# 1) Copier package.json et le lock file généré
+COPY --from=builder /app/package*.json ./
+COPY --from=builder /app/.output ./.output
+
+# 2) Installer seulement les dépendances "prod"
+RUN npm install --production
+
+# (Optionnel) Exécuter l'application en tant qu'utilisateur non-root
+# RUN addgroup --system appgroup && adduser --system appuser --ingroup appgroup
+# USER appuser
+
+# 3) Exposer le port 3000 (Nuxt par défaut)
+EXPOSE 3000
+
+# 4) Démarrer l'application (Nuxt 3.x)
+CMD ["node", ".output/server/index.mjs"]
