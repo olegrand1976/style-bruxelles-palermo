@@ -1,18 +1,16 @@
 #####################################
 # Étape 1 : Build stage
 #####################################
-FROM node:20-alpine AS builder
+FROM node:20-slim AS builder
 
 WORKDIR /app
 
 # 1) Copier les fichiers de dépendances
 COPY package*.json ./
 
-# 2) Installer toutes les dépendances avec gestion du bug npm/rollup sur musl
-#    Nettoyer le cache et forcer une réinstallation propre
-RUN npm cache clean --force && \
-    rm -rf node_modules package-lock.json && \
-    npm install --no-optional --legacy-peer-deps
+# 2) Installer toutes les dépendances
+#    Utiliser npm ci pour une installation reproductible
+RUN npm ci
 
 # 3) Copier le reste du code source
 COPY . .
@@ -24,7 +22,7 @@ RUN npm run build
 #####################################
 # Étape 2 : Runtime stage
 #####################################
-FROM node:20-alpine
+FROM node:20-slim
 
 WORKDIR /app
 
@@ -32,12 +30,11 @@ WORKDIR /app
 COPY --from=builder /app/package*.json ./
 COPY --from=builder /app/.output ./.output
 
-# 2) Installer seulement les dépendances "prod" avec gestion du bug npm/rollup
-RUN npm cache clean --force && \
-    npm install --production --no-optional --legacy-peer-deps
+# 2) Installer seulement les dépendances "prod"
+RUN npm ci --production
 
 # (Optionnel) Exécuter l'application en tant qu'utilisateur non-root
-# RUN addgroup -S appgroup && adduser -S appuser -G appgroup
+# RUN addgroup --system appgroup && adduser --system appuser --ingroup appgroup
 # USER appuser
 
 # 3) Exposer le port 3000 (Nuxt par défaut)
