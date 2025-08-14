@@ -9,8 +9,8 @@ WORKDIR /app
 COPY package*.json ./
 
 # 2) Installer toutes les dépendances
-#    Utiliser npm ci pour une installation reproductible
-RUN npm ci
+#    Utiliser npm install pour résoudre automatiquement les conflits
+RUN npm install
 
 # 3) Copier le reste du code source
 COPY . .
@@ -31,7 +31,7 @@ COPY --from=builder /app/package*.json ./
 COPY --from=builder /app/.output ./.output
 
 # 2) Installer seulement les dépendances "prod"
-RUN npm ci --production
+RUN npm install --production
 
 # (Optionnel) Exécuter l'application en tant qu'utilisateur non-root
 # RUN addgroup --system appgroup && adduser --system appuser --ingroup appgroup
