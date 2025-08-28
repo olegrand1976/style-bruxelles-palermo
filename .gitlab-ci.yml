@@ -47,11 +47,11 @@ deploy:
     - mkdir -p ~/.ssh
     - ssh-keyscan -H 141.94.106.145 >> ~/.ssh/known_hosts
     - ssh rocky@141.94.106.145 "
-        docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD &&
-        docker pull docker.io/$DOCKERHUB_USERNAME/$DOCKER_IMAGE_NAME:latest &&
-        docker stop nuxt-container || true &&
-        docker rm nuxt-container || true &&
-        docker run -d --restart=always -p 3000:3000 --name nuxt-container docker.io/$DOCKERHUB_USERNAME/$DOCKER_IMAGE_NAME:latest
+      docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD &&
+      docker pull docker.io/$DOCKERHUB_USERNAME/$DOCKER_IMAGE_NAME:latest &&
+      docker stop nuxt-container || true &&
+      docker rm nuxt-container || true &&
+      docker run -d --restart=always -p 3000:3000 --name nuxt-container docker.io/$DOCKERHUB_USERNAME/$DOCKER_IMAGE_NAME:latest
       "
   only:
     - main
