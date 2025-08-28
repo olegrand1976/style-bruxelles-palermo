@@ -43,18 +43,25 @@ deploy:
   before_script:
     - apt-get update -qq && apt-get install -y -qq openssh-client
   script:
-    - eval $(ssh-agent -s)
-    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
+    # Méthode alternative avec fichier temporaire et permissions strictes
     - mkdir -p ~/.ssh
     - chmod 700 ~/.ssh
+    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' > ~/.ssh/deploy_key
+    - chmod 600 ~/.ssh/deploy_key
     - ssh-keyscan -H 141.94.106.145 >> ~/.ssh/known_hosts
     - chmod 644 ~/.ssh/known_hosts
-    - ssh rocky@141.94.106.145 "
-      docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD &&
-      docker pull docker.io/$DOCKERHUB_USERNAME/$DOCKER_IMAGE_NAME:latest &&
-      docker stop nuxt-container || true &&
-      docker rm nuxt-container || true &&
-      docker run -d --restart=always -p 3000:3000 --name nuxt-container docker.io/$DOCKERHUB_USERNAME/$DOCKER_IMAGE_NAME:latest
+    # Test de connectivité
+    - ssh -i ~/.ssh/deploy_key -o ConnectTimeout=10 rocky@141.94.106.145 "echo 'SSH connection successful'"
+    # Déploiement
+    - ssh -i ~/.ssh/deploy_key rocky@141.94.106.145 "
+        docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD &&
+        docker pull docker.io/$DOCKERHUB_USERNAME/$DOCKER_IMAGE_NAME:latest &&
+        docker stop nuxt-container || true &&
+        docker rm nuxt-container || true &&
+        docker run -d --restart=always -p 3000:3000 --name nuxt-container docker.io/$DOCKERHUB_USERNAME/$DOCKER_IMAGE_NAME:latest
       "
+  after_script:
+    # Nettoyage sécurisé
+    - rm -f ~/.ssh/deploy_key
   only:
     - main
