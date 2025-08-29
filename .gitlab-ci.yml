@@ -39,41 +39,17 @@ build:
 #####################################
 deploy:
   stage: deploy
-  image: ubuntu:22.04
-  before_script:
-    - apt-get update -qq && apt-get install -y -qq openssh-client
+  image: alpine:latest
   script:
-    - eval $(ssh-agent -s)
-    - echo "🔍 Diagnostic de la clé SSH..."
-    - echo "📏 Longueur de SSH_PRIVATE_KEY:" $(echo "$SSH_PRIVATE_KEY" | wc -c)
-    - echo "🔤 Premiers caractères:" $(echo "$SSH_PRIVATE_KEY" | head -c 50)
-    - echo "🔤 Derniers caractères:" $(echo "$SSH_PRIVATE_KEY" | tail -c 50)
-    - echo "📝 Format détecté:" $(echo "$SSH_PRIVATE_KEY" | head -1)
-    - echo "🔧 Test de nettoyage des caractères..."
-    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | head -1
-    - echo "🔐 Tentative de chargement de la clé..."
-    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add - || echo "❌ Échec du chargement"
-    - echo "🛠️ Version OpenSSH:" $(ssh -V 2>&1)
-    - echo "🛠️ Version OpenSSL:" $(openssl version)
-    - echo "📁 Tentative alternative avec fichier temporaire..."
-    - mkdir -p ~/.ssh
-    - chmod 700 ~/.ssh
-    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' > ~/.ssh/temp_key
-    - chmod 600 ~/.ssh/temp_key
-    - echo "📏 Taille du fichier créé:" $(wc -c ~/.ssh/temp_key)
-    - echo "🔍 Contenu du fichier (premiers chars):" $(head -c 100 ~/.ssh/temp_key)
-    - echo "🔐 Test avec fichier temporaire..."
-    - ssh-add ~/.ssh/temp_key || echo "❌ Échec avec fichier aussi"
-    - echo "🗑️ Nettoyage..."
-    - rm -f ~/.ssh/temp_key
-    - ssh-keyscan -H 141.94.106.145 >> ~/.ssh/known_hosts
-    - chmod 644 ~/.ssh/known_hosts
-    - ssh rocky@141.94.106.145 "
-      docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD &&
-      docker pull docker.io/$DOCKERHUB_USERNAME/$DOCKER_IMAGE_NAME:latest &&
-      docker stop nuxt-container || true &&
-      docker rm nuxt-container || true &&
-      docker run -d --restart=always -p 3000:3000 --name nuxt-container docker.io/$DOCKERHUB_USERNAME/$DOCKER_IMAGE_NAME:latest
+    - apk add --no-cache openssh-client
+    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' > key.pem
+    - chmod 600 key.pem
+    - ssh -o StrictHostKeyChecking=no -i key.pem rocky@141.94.106.145 "
+        docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD &&
+        docker pull docker.io/$DOCKERHUB_USERNAME/$DOCKER_IMAGE_NAME:latest &&
+        docker stop nuxt-container || true &&
+        docker rm nuxt-container || true &&
+        docker run -d --restart=always -p 3000:3000 --name nuxt-container docker.io/$DOCKERHUB_USERNAME/$DOCKER_IMAGE_NAME:latest
       "
   only:
     - main
