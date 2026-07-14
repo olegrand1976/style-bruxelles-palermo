@@ -31,7 +31,7 @@ steps:
         gcloud run deploy ${_WEB_SERVICE} \
           --project="$PROJECT_ID" --image="$$IMAGE" --region="${_RUN_REGION}" \
           --service-account="$$SA" --allow-unauthenticated --port=8080 \
-          --memory=512Mi --cpu=1 --concurrency=80 --min-instances=0 --max-instances=3 --timeout=60 \
+          --memory=512Mi --cpu=1 --concurrency=80 --min-instances=1 --max-instances=3 --timeout=60 \
           --quiet
         URL=$$(gcloud run services describe ${_WEB_SERVICE} --region="${_RUN_REGION}" --format='value(status.url)')
         gcloud run services add-iam-policy-binding ${_WEB_SERVICE} \
