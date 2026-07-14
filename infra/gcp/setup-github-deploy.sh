@@ -33,6 +33,8 @@ for role in \
   roles/storage.admin \
   roles/run.admin \
   roles/artifactregistry.reader \
+  roles/artifactregistry.writer \
+  roles/serviceusage.serviceUsageConsumer \
   roles/iam.serviceAccountUser; do
   gcloud projects add-iam-policy-binding "$GCP_PROJECT_ID" \
     --member="serviceAccount:${SA_EMAIL}" \
